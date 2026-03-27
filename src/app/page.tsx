@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { asset } from '@/lib/assetPath'
 
 const PLAYTOMIC_URL =
   'https://app.playtomic.com/tenant/c9825c68-9da4-4cc4-a065-06ea58087f85?utm_source=app_ios&utm_campaign=share&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGngd9wn58fSDwPnOr_qB-ckJuekphFMIAt1taj2AnenpRp9ew3MykolGyULcw_aem_s3FqvC8jKTCbMpbwv-VupA'
@@ -76,7 +77,7 @@ export default function HomePage() {
         {/* Video background */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
-          src="/assets/hero-video.mp4"
+          src={asset('/assets/hero-video.mp4')}
           autoPlay
           muted
           loop

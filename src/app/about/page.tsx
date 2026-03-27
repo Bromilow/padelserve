@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { asset } from '@/lib/assetPath'
 
 const BOOKING_URL =
   'https://app.playtomic.com/tenant/c9825c68-9da4-4cc4-a065-06ea58087f85?utm_source=app_ios&utm_campaign=share&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGngd9wn58fSDwPnOr_qB-ckJuekphFMIAt1taj2AnenpRp9ew3MykolGyULcw_aem_s3FqvC8jKTCbMpbwv-VupA'
@@ -203,7 +204,7 @@ export default function AboutPage() {
         className="relative w-full hidden md:block"
         style={{
           height: '60vh',
-          backgroundImage: 'url(/assets/court-night-lights.webp)',
+          backgroundImage: `url(${asset('/assets/court-night-lights.webp')})`,
           backgroundAttachment: 'fixed',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -214,7 +215,7 @@ export default function AboutPage() {
         className="relative w-full md:hidden"
         style={{
           height: '50vh',
-          backgroundImage: 'url(/assets/court-night-lights.webp)',
+          backgroundImage: `url(${asset('/assets/court-night-lights.webp')})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
