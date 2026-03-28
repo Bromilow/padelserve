@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { asset } from '@/lib/assetPath'
 
@@ -68,7 +69,17 @@ export default function Navigation() {
     return () => document.body.classList.remove('mobile-nav-open')
   }, [menuOpen])
 
+  const pathname = usePathname()
   const closeMenu = () => setMenuOpen(false)
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/#') && pathname === '/') {
+      e.preventDefault()
+      const el = document.querySelector(href.slice(1))
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+    closeMenu()
+  }
 
   return (
     <>
@@ -103,6 +114,7 @@ export default function Navigation() {
                   key={link.href}
                   href={link.href}
                   className="nav-link text-white opacity-90 hover:opacity-100 transition-opacity duration-300"
+                  onClick={(e) => handleNavClick(e, link.href)}
                 >
                   {link.label}
                 </Link>
@@ -173,7 +185,7 @@ export default function Navigation() {
                 <motion.div key={link.href} variants={linkVariants}>
                   <Link
                     href={link.href}
-                    onClick={closeMenu}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="text-white block text-center"
                     style={{
                       fontFamily: 'var(--font-cormorant), serif',
