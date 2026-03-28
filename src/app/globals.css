@@ -309,6 +309,9 @@ body {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+.marquee-strip:hover .marquee-track {
+  animation-play-state: paused;
+}
 
 /* ─── Scroll indicator ─── */
 @keyframes scrollLine {

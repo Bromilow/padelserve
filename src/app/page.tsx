@@ -167,10 +167,10 @@ export default function HomePage() {
             {/* Left: image */}
             <div
               ref={parallaxRef}
-              className="parallax-container w-full lg:w-[60%] h-[55vw] max-h-[680px] min-h-[340px] reveal-left"
+              className="parallax-container w-full lg:w-[60%] h-[70vw] lg:h-[55vw] max-h-[680px] min-h-[300px] reveal-left"
             >
               <Image
-                src="/assets/court-night-lights.webp"
+                src={asset('/assets/court-night-lights.webp')}
                 alt="Padel court at night with illuminated SERVE sign and string lights"
                 fill
                 className="parallax-img object-cover"
@@ -180,7 +180,7 @@ export default function HomePage() {
             </div>
 
             {/* Right: text */}
-            <div className="w-full lg:w-[40%] flex flex-col justify-center pt-12 lg:pt-0">
+            <div className="w-full lg:w-[40%] flex flex-col justify-center pt-8 lg:pt-0">
               <p className="label-overline text-[var(--serve-green)] mb-5 fade-up delay-100">
                 The Experience
               </p>
@@ -263,7 +263,7 @@ export default function HomePage() {
             {/* Left image */}
             <div className="img-hover-zoom relative aspect-[4/5] reveal-left">
               <Image
-                src="/assets/padel-corridor.webp"
+                src={asset('/assets/padel-corridor.webp')}
                 alt="Two players walking through padel court corridors"
                 fill
                 className="object-cover"
@@ -279,7 +279,7 @@ export default function HomePage() {
             {/* Right image */}
             <div className="img-hover-zoom relative aspect-[4/5] reveal-right">
               <Image
-                src="/assets/padel-player-court.webp"
+                src={asset('/assets/padel-player-court.webp')}
                 alt="Padel player on court"
                 fill
                 className="object-cover"
@@ -307,9 +307,9 @@ export default function HomePage() {
         </div>
 
         {/* Editorial floating image */}
-        <div className="hidden lg:block absolute bottom-0 right-0 w-56 xl:w-72 h-auto pointer-events-none select-none" style={{ zIndex: 0 }}>
+        <div className="hidden lg:block absolute bottom-0 right-0 w-56 xl:w-72 h-auto pointer-events-none select-none" style={{ zIndex: 1 }}>
           <Image
-            src="/assets/padel-player-racket.webp"
+            src={asset('/assets/padel-player-racket.webp')}
             alt="Professional padel player holding racket"
             width={288}
             height={420}
@@ -322,9 +322,9 @@ export default function HomePage() {
       {/* ─── SECTION 4: GALLERY STRIP ─── */}
       <section className="bg-[var(--serve-dark)] py-16 overflow-hidden">
         {/* Marquee strip */}
-        <div className="relative w-full overflow-hidden">
+        <div className="relative w-full overflow-hidden marquee-strip">
           <div
-            className="flex gap-3"
+            className="flex gap-3 marquee-track"
             style={{ animation: 'marquee 32s linear infinite', width: 'max-content' }}
           >
             {[...galleryImages, ...galleryImages].map((img, i) => (
@@ -333,7 +333,7 @@ export default function HomePage() {
                 className="relative flex-shrink-0 h-[400px] w-[280px] sm:w-[300px] overflow-hidden"
               >
                 <Image
-                  src={img.src}
+                  src={asset(img.src)}
                   alt={img.alt}
                   fill
                   className="object-cover"
@@ -388,11 +388,11 @@ export default function HomePage() {
 
             {/* Right: images */}
             <div className="w-full lg:w-[60%] reveal-right">
-              <div className="relative">
+              <div className="relative pb-0 sm:pb-12">
                 {/* Main image */}
-                <div className="img-hover-zoom relative aspect-[4/3] w-full">
+                <div className="img-hover-zoom relative aspect-[3/2] sm:aspect-[4/3] w-full">
                   <Image
-                    src="/assets/pizza-artisan.webp"
+                    src={asset('/assets/pizza-artisan.webp')}
                     alt="Artisan wood-fired pizza on wooden board"
                     fill
                     className="object-cover"
@@ -406,7 +406,7 @@ export default function HomePage() {
                   style={{ zIndex: 10 }}
                 >
                   <Image
-                    src="/assets/dining-terrace.webp"
+                    src={asset('/assets/dining-terrace.webp')}
                     alt="People dining at the outdoor terrace beside glass padel courts"
                     fill
                     className="object-cover"
@@ -451,7 +451,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="img-hover-zoom relative aspect-[4/3] reveal-left">
               <Image
-                src="/assets/kids-foosball.webp"
+                src={asset('/assets/kids-foosball.webp')}
                 alt="Kids playing foosball indoors at SERVE"
                 fill
                 className="object-cover"
@@ -460,7 +460,7 @@ export default function HomePage() {
             </div>
             <div className="img-hover-zoom relative aspect-[4/3] reveal-right">
               <Image
-                src="/assets/kids-play-night.webp"
+                src={asset('/assets/kids-play-night.webp')}
                 alt="Children playing outside under string lights at night"
                 fill
                 className="object-cover"
@@ -499,7 +499,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── SECTION 8: BOTTOM CTA / FIND US ─── */}
-      <section className="bg-[var(--serve-cream)] section-padding">
+      <section className="bg-[var(--serve-cream)] section-padding-sm">
         <div className="max-w-screen-md mx-auto px-6 text-center">
           <p className="label-overline text-[var(--serve-green)] mb-6 fade-up">
             Find Us

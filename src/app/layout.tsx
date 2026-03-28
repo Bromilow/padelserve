@@ -43,9 +43,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'SERVE Padel & Play' }],
   creator: 'SERVE Padel & Play',
   publisher: 'SERVE Padel & Play',
-  metadataBase: new URL('https://servepadel.co.za'),
+  metadataBase: new URL('https://bromilow.github.io/padelserve'),
   alternates: {
-    canonical: '/',
+    canonical: 'https://bromilow.github.io/padelserve',
   },
   openGraph: {
     type: 'website',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
       'Book world-class padel courts in Umhlanga. Premium facilities, professional coaching, and the best padel experience in Durban.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/assets/court-night-lights.webp',
         width: 1200,
         height: 630,
         alt: 'SERVE Padel & Play — Umhlanga\'s Premier Padel Club',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     title: 'SERVE Padel & Play | Umhlanga\'s Premier Padel Club',
     description:
       'Book world-class padel courts in Umhlanga. Premium facilities, professional coaching, and the best padel experience in Durban.',
-    images: ['/og-image.jpg'],
+    images: ['/assets/court-night-lights.webp'],
   },
   robots: {
     index: true,
@@ -93,6 +93,42 @@ export default function RootLayout({
         className={`${cormorant.variable} ${jost.variable} ${greatVibes.variable}`}
         style={{ fontFamily: 'var(--font-jost), sans-serif' }}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SportsActivityLocation",
+              "name": "SERVE Padel & Play",
+              "description": "Umhlanga's premier padel club with 3 championship padel courts and 1 pickleball court. Open 6am–10pm daily.",
+              "url": "https://bromilow.github.io/padelserve",
+              "telephone": "+27615451063",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "2nd Floor, 185 Ridge Road",
+                "addressLocality": "Umhlanga",
+                "addressRegion": "KwaZulu-Natal",
+                "postalCode": "4319",
+                "addressCountry": "ZA"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -29.726,
+                "longitude": 31.071
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                "opens": "06:00",
+                "closes": "22:00"
+              },
+              "sport": ["Padel", "Pickleball"],
+              "priceRange": "$$",
+              "image": "https://bromilow.github.io/padelserve/assets/court-night-lights.webp",
+              "sameAs": ["https://www.instagram.com/servepadel"]
+            })
+          }}
+        />
         <Navigation />
         <main>{children}</main>
         <Footer />
