@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
+import { asset } from '@/lib/assetPath'
 
 const BOOKING_URL =
   'https://app.playtomic.com/tenant/c9825c68-9da4-4cc4-a065-06ea58087f85?utm_source=app_ios&utm_campaign=share&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGngd9wn58fSDwPnOr_qB-ckJuekphFMIAt1taj2AnenpRp9ew3MykolGyULcw_aem_s3FqvC8jKTCbMpbwv-VupA'
@@ -83,32 +85,15 @@ export default function Navigation() {
         <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex flex-col leading-none" onClick={closeMenu}>
-              <span
-                className="text-white font-bold tracking-widest"
-                style={{
-                  fontFamily: 'var(--font-cormorant), serif',
-                  fontSize: '1.6rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.2em',
-                }}
-              >
-                SERVE
-              </span>
-              <span
-                className="text-white"
-                style={{
-                  fontFamily: 'var(--font-jost), sans-serif',
-                  fontSize: '0.52rem',
-                  letterSpacing: '0.3em',
-                  textTransform: 'uppercase',
-                  fontWeight: 300,
-                  marginTop: '-2px',
-                  opacity: 0.8,
-                }}
-              >
-                padel &amp; play
-              </span>
+            <Link href="/" onClick={closeMenu}>
+              <Image
+                src={asset('/assets/webp/1.webp')}
+                alt="SERVE Padel & Play"
+                width={89}
+                height={48}
+                style={{ width: 'auto', height: '44px' }}
+                priority
+              />
             </Link>
 
             {/* Desktop Nav */}

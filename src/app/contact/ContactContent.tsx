@@ -342,18 +342,17 @@ export default function ContactContent() {
                 className="mb-8 overflow-hidden"
                 style={{ backgroundColor: 'var(--serve-green)' }}
               >
-                {/* Decorative serve-sign image */}
-                <div className="relative" style={{ height: '200px' }}>
+                {/* Logo */}
+                <div
+                  className="flex items-center justify-center"
+                  style={{ height: '160px', backgroundColor: 'rgba(0,0,0,0.18)' }}
+                >
                   <Image
-                    src={asset('/assets/serve-sign-hedge.webp')}
-                    alt="SERVE padel sign on hedge wall"
-                    fill
-                    className="object-cover object-center"
-                    sizes="420px"
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: 'rgba(28, 58, 42, 0.45)' }}
+                    src={asset('/assets/webp/2.webp')}
+                    alt="SERVE Padel & Play"
+                    width={185}
+                    height={100}
+                    style={{ width: 'auto', height: '80px' }}
                   />
                 </div>
 

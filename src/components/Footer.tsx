@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import { asset } from '@/lib/assetPath'
 
 const BOOKING_URL =
   'https://app.playtomic.com/tenant/c9825c68-9da4-4cc4-a065-06ea58087f85?utm_source=app_ios&utm_campaign=share&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGngd9wn58fSDwPnOr_qB-ckJuekphFMIAt1taj2AnenpRp9ew3MykolGyULcw_aem_s3FqvC8jKTCbMpbwv-VupA'
@@ -13,32 +15,14 @@ export default function Footer() {
       {/* Top: Logo + Tagline */}
       <div className="max-w-screen-xl mx-auto px-6 lg:px-12 pt-20 pb-12">
         <div className="flex flex-col items-start gap-3 mb-16">
-          <div className="flex flex-col leading-none">
-            <span
-              style={{
-                fontFamily: 'var(--font-cormorant), serif',
-                fontSize: '2.2rem',
-                fontWeight: 700,
-                letterSpacing: '0.2em',
-                color: 'var(--serve-cream)',
-              }}
-            >
-              SERVE
-            </span>
-            <span
-              style={{
-                fontFamily: 'var(--font-jost), sans-serif',
-                fontSize: '0.55rem',
-                letterSpacing: '0.3em',
-                textTransform: 'uppercase',
-                fontWeight: 300,
-                opacity: 0.6,
-                marginTop: '-2px',
-                color: 'var(--serve-cream)',
-              }}
-            >
-              padel &amp; play
-            </span>
+          <div>
+            <Image
+              src={asset('/assets/webp/2.webp')}
+              alt="SERVE Padel & Play"
+              width={130}
+              height={70}
+              style={{ width: 'auto', height: '60px' }}
+            />
           </div>
           <p
             style={{

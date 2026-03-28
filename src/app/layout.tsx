@@ -26,6 +26,8 @@ const greatVibes = Great_Vibes({
   display: 'swap',
 })
 
+const base = process.env.NODE_ENV === 'production' ? '/padelserve' : ''
+
 export const metadata: Metadata = {
   title: 'SERVE Padel & Play | Umhlanga\'s Premier Padel Club',
   description:
@@ -70,6 +72,14 @@ export const metadata: Metadata = {
     description:
       'Book world-class padel courts in Umhlanga. Premium facilities, professional coaching, and the best padel experience in Durban.',
     images: ['/assets/court-night-lights.webp'],
+  },
+  icons: {
+    icon: [
+      { url: `${base}/assets/favicon/favicon-32x32.png`, sizes: '32x32', type: 'image/png' },
+      { url: `${base}/assets/favicon/favicon-16x16.png`, sizes: '16x16', type: 'image/png' },
+    ],
+    shortcut: `${base}/assets/favicon/favicon.ico`,
+    apple: `${base}/assets/favicon/apple-touch-icon.png`,
   },
   robots: {
     index: true,
