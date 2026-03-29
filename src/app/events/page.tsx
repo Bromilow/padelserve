@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import EventsContent from './EventsContent'
 
 export const metadata: Metadata = {
-  title: 'Private Events & Functions | SERVE Padel Umhlanga',
-  description: 'Host your next event at SERVE Padel in Umhlanga. Birthday parties, kids\' celebrations, and corporate team-building on championship padel courts.',
+  title: 'Private Events & Functions in Umhlanga | SERVE Padel',
+  description: 'Host your next event at SERVE Padel & Play, Umhlanga. Birthday parties, kids\' celebrations, and corporate team-building days on championship padel courts with full catering. 185 Ridge Rd, Umhlanga.',
   openGraph: {
     title: 'Private Events & Functions | SERVE Padel Umhlanga',
     description: 'Host your next event at SERVE Padel in Umhlanga. Birthday parties, kids\' celebrations, and corporate team-building on championship padel courts.',

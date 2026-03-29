@@ -62,7 +62,7 @@ export const metadata: Metadata = {
         url: '/assets/court-night-lights.webp',
         width: 1200,
         height: 630,
-        alt: 'SERVE Padel & Play — Umhlanga\'s Premier Padel Club',
+        alt: 'SERVE Padel & Play, Umhlanga\'s Premier Padel Club',
       },
     ],
   },

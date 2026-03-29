@@ -10,33 +10,36 @@ export default function Footer() {
 
   return (
     <footer
-      style={{ backgroundColor: 'var(--serve-dark)', color: 'var(--serve-cream)' }}
+      className="relative overflow-hidden"
+      style={{ color: 'var(--serve-cream)', textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
     >
+      <Image
+        src={asset('/assets/16.png')}
+        alt="Footer background"
+        fill
+        className="object-cover"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-black/60" />
       {/* Top: Logo + Tagline */}
-      <div className="max-w-screen-xl mx-auto px-6 lg:px-12 pt-20 pb-12">
-        <div className="flex flex-col items-start gap-3 mb-16">
-          <div>
-            <Image
-              src={asset('/assets/webp/2.webp')}
-              alt="SERVE Padel & Play"
-              width={130}
-              height={70}
-              style={{ width: 'auto', height: '60px' }}
-            />
-          </div>
+      <div className="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12 pt-10 pb-8">
+        <div className="flex flex-col items-start gap-3 mb-10">
           <p
             style={{
-              fontFamily: 'var(--font-great-vibes), cursive',
-              fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
-              color: 'var(--serve-sage)',
-              marginTop: '0.5rem',
+              fontFamily: 'var(--font-cormorant), serif',
+              fontSize: 'clamp(1.4rem, 2.5vw, 2rem)',
+              fontWeight: 300,
+              fontStyle: 'italic',
+              color: 'var(--serve-cream)',
+              textShadow: '0 2px 8px rgba(0,0,0,0.6)',
+              letterSpacing: '0.02em',
             }}
           >
             Where Umhlanga comes to play
           </p>
         </div>
 
-        <hr className="hr-elegant mb-16" />
+        <hr className="hr-elegant mb-10" />
 
         {/* Middle: 3 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
@@ -44,7 +47,7 @@ export default function Footer() {
           <div>
             <h4
               className="label-overline mb-6"
-              style={{ color: 'var(--serve-sage)' }}
+              style={{ color: 'var(--serve-amber)' }}
             >
               Quick Links
             </h4>
@@ -53,6 +56,7 @@ export default function Footer() {
                 { label: 'Home', href: '/' },
                 { label: 'About', href: '/about' },
                 { label: 'Events', href: '/events' },
+                { label: 'Eat & Drink', href: '/menu' },
                 { label: 'Contact', href: '/contact' },
               ].map((link) => (
                 <li key={link.href}>
@@ -77,7 +81,7 @@ export default function Footer() {
           <div>
             <h4
               className="label-overline mb-6"
-              style={{ color: 'var(--serve-sage)' }}
+              style={{ color: 'var(--serve-amber)' }}
             >
               Play
             </h4>
@@ -124,7 +128,7 @@ export default function Footer() {
           <div>
             <h4
               className="label-overline mb-6"
-              style={{ color: 'var(--serve-sage)' }}
+              style={{ color: 'var(--serve-amber)' }}
             >
               Visit Us
             </h4>
@@ -198,7 +202,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <hr className="hr-elegant mt-16 mb-8" />
+        <hr className="hr-elegant mt-8 mb-6" />
 
         {/* Bottom: Copyright */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">

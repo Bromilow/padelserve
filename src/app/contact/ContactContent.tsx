@@ -87,51 +87,42 @@ export default function ContactContent() {
     <div ref={pageRef}>
       {/* ─── 1. PAGE HEADER ─── */}
       <section
-        className="relative flex items-end pb-12 md:pb-16"
-        style={{
-          backgroundColor: 'var(--serve-green)',
-          paddingTop: 'calc(80px + 2.5rem)',
-          minHeight: '38vh',
-        }}
+        className="relative flex items-center justify-center"
+        style={{ height: 'calc(80vh + 80px)', minHeight: '640px', paddingTop: '80px' }}
       >
-        {/* Subtle botanical mural watermark */}
         <Image
-          src={asset('/assets/botanical-mural.webp')}
-          alt=""
+          src={asset('/assets/10.JPG')}
+          alt="SERVE Padel & Play"
           fill
-          className="object-cover object-center opacity-10"
+          className="object-cover object-center"
           sizes="100vw"
-          aria-hidden="true"
+          priority
         />
-        <div className="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12 w-full">
-          <p
-            className="label-overline mb-5 fade-up in-view"
-            style={{ color: 'rgba(245, 240, 232, 0.65)' }}
-          >
+        <div className="video-overlay absolute inset-0" />
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+          <p className="label-overline text-[var(--serve-cream)] opacity-70 mb-6 fade-up in-view">
             Get in touch
           </p>
-          <p
-            className="fade-up in-view delay-200"
-            style={{
-              fontFamily: 'var(--font-great-vibes), cursive',
-              fontSize: 'clamp(1.8rem, 3.5vw, 3rem)',
-              color: 'var(--serve-sage)',
-              marginBottom: '0.5rem',
-            }}
-          >
-            Say hello
-          </p>
           <h1
-            className="text-display-md fade-up in-view delay-300"
+            className="text-display-lg text-[var(--serve-cream)] font-light mb-6 fade-up in-view delay-200"
+            style={{ fontFamily: 'var(--font-cormorant), serif' }}
+          >
+            We&apos;d love to{' '}
+            <span style={{ fontStyle: 'italic', color: 'var(--serve-amber)' }}>hear from you.</span>
+          </h1>
+          <p
+            className="text-[var(--serve-cream)] fade-up in-view delay-400"
             style={{
-              fontFamily: 'var(--font-cormorant), serif',
-              fontWeight: 400,
-              color: 'var(--serve-cream)',
-              fontStyle: 'italic',
+              fontFamily: 'var(--font-jost), sans-serif',
+              fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+              opacity: 0.8,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              fontWeight: 300,
             }}
           >
-            We&apos;d love to hear from you
-          </h1>
+            Say hello.
+          </p>
         </div>
       </section>
 
@@ -150,7 +141,8 @@ export default function ContactContent() {
                 >
                   <p
                     style={{
-                      fontFamily: 'var(--font-great-vibes), cursive',
+                      fontFamily: 'var(--font-cormorant), serif',
+                      fontStyle: 'italic',
                       fontSize: 'clamp(2rem, 4vw, 3.5rem)',
                       color: 'var(--serve-sage)',
                       marginBottom: '1rem',
@@ -162,7 +154,7 @@ export default function ContactContent() {
                     className="text-display-sm mb-4"
                     style={{
                       fontFamily: 'var(--font-cormorant), serif',
-                      fontWeight: 400,
+                      fontWeight: 300,
                       color: 'var(--serve-green)',
                     }}
                   >
@@ -179,7 +171,7 @@ export default function ContactContent() {
                       maxWidth: '28rem',
                     }}
                   >
-                    We&apos;ll be in touch shortly &mdash; thank you.
+                    We&apos;ll be in touch shortly. Thank you.
                   </p>
                 </div>
               ) : (
@@ -188,7 +180,7 @@ export default function ContactContent() {
                     className="text-display-sm mb-10"
                     style={{
                       fontFamily: 'var(--font-cormorant), serif',
-                      fontWeight: 400,
+                      fontWeight: 300,
                       color: 'var(--serve-green)',
                     }}
                   >
@@ -342,20 +334,6 @@ export default function ContactContent() {
                 className="mb-8 overflow-hidden"
                 style={{ backgroundColor: 'var(--serve-green)' }}
               >
-                {/* Logo */}
-                <div
-                  className="flex items-center justify-center"
-                  style={{ height: '160px', backgroundColor: 'rgba(0,0,0,0.18)' }}
-                >
-                  <Image
-                    src={asset('/assets/webp/2.webp')}
-                    alt="SERVE Padel & Play"
-                    width={185}
-                    height={100}
-                    style={{ width: 'auto', height: '80px' }}
-                  />
-                </div>
-
                 {/* Details */}
                 <div className="p-8 space-y-7">
                   {/* Visit Us */}
@@ -370,7 +348,7 @@ export default function ContactContent() {
                       style={{
                         fontFamily: 'var(--font-cormorant), serif',
                         fontSize: '1.15rem',
-                        fontWeight: 400,
+                        fontWeight: 300,
                         color: 'var(--serve-cream)',
                         lineHeight: 1.6,
                       }}
@@ -396,7 +374,7 @@ export default function ContactContent() {
                       style={{
                         fontFamily: 'var(--font-cormorant), serif',
                         fontSize: '1.15rem',
-                        fontWeight: 400,
+                        fontWeight: 300,
                         color: 'var(--serve-cream)',
                         textDecoration: 'none',
                         transition: 'opacity 0.3s ease',
@@ -422,7 +400,7 @@ export default function ContactContent() {
                       style={{
                         fontFamily: 'var(--font-cormorant), serif',
                         fontSize: '1.15rem',
-                        fontWeight: 400,
+                        fontWeight: 300,
                         color: 'var(--serve-cream)',
                         lineHeight: 1.6,
                       }}
@@ -450,7 +428,7 @@ export default function ContactContent() {
                       style={{
                         fontFamily: 'var(--font-jost), sans-serif',
                         fontSize: '0.85rem',
-                        fontWeight: 400,
+                        fontWeight: 300,
                         color: 'var(--serve-cream)',
                         textDecoration: 'none',
                         letterSpacing: '0.04em',
@@ -476,7 +454,7 @@ export default function ContactContent() {
                   style={{ border: 0, display: 'block' }}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="SERVE Padel & Play location — 185 Ridge Rd, Umhlanga"
+                  title="SERVE Padel & Play location, 185 Ridge Rd, Umhlanga"
                 />
               </div>
             </div>
@@ -484,38 +462,6 @@ export default function ContactContent() {
         </div>
       </section>
 
-      {/* ─── 3. BOTTOM STRIP ─── */}
-      <section
-        className="py-6 px-6"
-        style={{ backgroundColor: 'var(--serve-dark)' }}
-      >
-        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-          <p
-            style={{
-              fontFamily: 'var(--font-jost), sans-serif',
-              fontSize: '0.72rem',
-              letterSpacing: '0.12em',
-              color: 'rgba(245, 240, 232, 0.5)',
-              textTransform: 'uppercase',
-              textAlign: 'center',
-            }}
-          >
-            SERVE Padel &amp; Play &middot; 2nd Floor, 185 Ridge Rd, Umhlanga &middot; 061 545 1063
-          </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-jost), sans-serif',
-              fontSize: '0.72rem',
-              letterSpacing: '0.12em',
-              color: 'rgba(245, 240, 232, 0.4)',
-              textTransform: 'uppercase',
-              flexShrink: 0,
-            }}
-          >
-            @servepadel
-          </p>
-        </div>
-      </section>
     </div>
   )
 }

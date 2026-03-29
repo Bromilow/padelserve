@@ -57,6 +57,7 @@ function useParallax() {
   return ref
 }
 
+
 const galleryImages = [
   { src: '/assets/dining-terrace.webp', alt: 'Dining terrace at SERVE' },
   { src: '/assets/srv-logo-mural.webp', alt: 'SRV botanical logo mural' },
@@ -64,6 +65,11 @@ const galleryImages = [
   { src: '/assets/kids-play-night.webp', alt: 'Kids playing at night under string lights' },
   { src: '/assets/serve-sign-hedge.webp', alt: 'SERVE padel sign on green hedge' },
   { src: '/assets/court-night-lights.webp', alt: 'Padel court at night with SRV sign' },
+  { src: '/assets/3.png', alt: 'SERVE' },
+  { src: '/assets/4.png', alt: 'SERVE' },
+  { src: '/assets/5.jpg', alt: 'SERVE' },
+  { src: '/assets/7.jpg', alt: 'SERVE' },
+  { src: '/assets/8.jpg', alt: 'SERVE' },
 ]
 
 export default function HomePage() {
@@ -77,7 +83,7 @@ export default function HomePage() {
         {/* Video background */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
-          src={asset('/assets/hero-video.mp4')}
+          src={asset('/assets/new-vid.mp4')}
           autoPlay
           muted
           loop
@@ -89,54 +95,68 @@ export default function HomePage() {
         <div className="video-overlay absolute inset-0 z-10" />
 
         {/* Hero content */}
-        <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
-          {/* Overline */}
-          <p
-            className="label-overline text-[var(--serve-cream)] mb-8 fade-in in-view"
-            style={{ transitionDelay: '0.1s' }}
-          >
-            Umhlanga · Padel &amp; Play
-          </p>
+        <div className="relative z-20 text-center px-6 max-w-5xl mx-auto pb-28 pt-20">
+
+          {/* Amber accent line */}
+          <div className="flex justify-center mb-6">
+            <div className="amber-line" />
+          </div>
 
           {/* Headline */}
           <h1
-            className="text-display-xl font-light text-[var(--serve-cream)] tracking-tight fade-in in-view"
+            className="hero-word font-light text-[var(--serve-cream)] tracking-tight mb-4"
             style={{
               fontFamily: 'var(--font-cormorant)',
-              transitionDelay: '0.3s',
+              fontSize: 'clamp(3.5rem, 9vw, 9rem)',
+              lineHeight: 1,
+              letterSpacing: '-0.02em',
+              animationDelay: '0.4s',
+              opacity: 0,
             }}
           >
-            Where Umhlanga
-            <br />
-            comes to play
+            Where Umhlanga comes to{' '}
+            <span style={{ fontStyle: 'italic', color: 'var(--serve-amber)' }}>play.</span>
           </h1>
 
           {/* Script accent */}
           <p
-            className="text-script-lg text-[var(--serve-cream)] opacity-80 mt-4 mb-10 fade-in in-view"
+            className="hero-word text-[var(--serve-cream)] mb-4"
             style={{
-              fontFamily: 'var(--font-great-vibes)',
-              transitionDelay: '0.55s',
+              fontFamily: 'var(--font-cormorant), serif',
+              fontStyle: 'italic',
+              fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
+              opacity: 0,
+              animationDelay: '0.9s',
+              letterSpacing: '0.02em',
             }}
           >
             and stay a little longer
           </p>
 
-          {/* CTA Buttons */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in in-view"
-            style={{ transitionDelay: '0.75s' }}
+          {/* Subheading */}
+          <p
+            className="hero-word text-[var(--serve-cream)] mb-10"
+            style={{
+              fontFamily: 'var(--font-jost)',
+              fontSize: '0.7rem',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              opacity: 0,
+              animationDelay: '1.1s',
+            }}
           >
+            Padel courts · Social dining · Private events
+          </p>
+
+          {/* CTA */}
+          <div className="hero-word flex flex-col items-center" style={{ animationDelay: '1.3s', opacity: 0 }}>
             <a
               href={PLAYTOMIC_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-luxury btn-luxury-light"
             >
-              <span>Book Your Court</span>
-            </a>
-            <a href="#experience" className="btn-luxury btn-luxury-light">
-              <span>Discover SERVE</span>
+              <span>Book a Court</span>
             </a>
           </div>
         </div>
@@ -160,17 +180,17 @@ export default function HomePage() {
       {/* ─── SECTION 2: EXPERIENCE ─── */}
       <section
         id="experience"
-        className="bg-[var(--serve-cream)] section-padding overflow-hidden"
+        className="bg-[var(--serve-cream)] section-padding-sm overflow-hidden"
       >
         <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col lg:flex-row gap-0 lg:gap-16 items-stretch">
             {/* Left: image */}
             <div
               ref={parallaxRef}
-              className="parallax-container w-full lg:w-[60%] h-[70vw] lg:h-[55vw] max-h-[680px] min-h-[300px] reveal-left"
+              className="parallax-container w-full lg:w-[60%] h-[55vw] lg:h-[42vw] max-h-[520px] min-h-[260px] reveal-left"
             >
               <Image
-                src={asset('/assets/court-night-lights.webp')}
+                src={asset('/assets/home.png')}
                 alt="Padel court at night with illuminated SERVE sign and string lights"
                 fill
                 className="parallax-img object-cover"
@@ -198,33 +218,15 @@ export default function HomePage() {
                 className="text-sm leading-relaxed text-[var(--serve-dark)] opacity-75 mb-12 fade-up delay-300"
                 style={{ fontFamily: 'var(--font-jost)', maxWidth: '38ch' }}
               >
-                SERVE is Umhlanga&apos;s most sought-after social and sporting
-                destination. Perched above Ridge Road, we&apos;ve woven together
-                world-class padel courts, artisan food, and a community that
-                lives for the moment. Whether you&apos;re here to compete or
-                simply to belong — this is where you want to be.
+                SERVE is where padel, food, and good company come together.
+                <br /><br />
+                A place to play, unwind, and stay longer than you planned.
+                <br /><br />
+                Mornings start with a match. Evenings turn into drinks, dinner, and one more game.
+                <br /><br />
+                Whether you&apos;re here to compete or simply to be part of it, this is where you want to be.
               </p>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 fade-up delay-400">
-                {[
-                  { num: '3', label: 'Padel Courts' },
-                  { num: '1', label: 'Pickleball Court' },
-                  { num: '\'25', label: 'Est.' },
-                ].map(({ num, label }) => (
-                  <div key={label} className="flex flex-col gap-1">
-                    <span
-                      className="text-display-sm text-[var(--serve-green)] font-light leading-none"
-                      style={{ fontFamily: 'var(--font-cormorant)' }}
-                    >
-                      {num}
-                    </span>
-                    <span className="label-overline text-[var(--serve-dark)] opacity-60">
-                      {label}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
@@ -233,7 +235,7 @@ export default function HomePage() {
       {/* ─── SECTION 3: PLAY ─── */}
       <section
         id="play"
-        className="bg-[var(--serve-green)] section-padding overflow-hidden relative"
+        className="bg-[var(--serve-green)] section-padding-sm overflow-hidden relative"
       >
         <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
           {/* Header */}
@@ -254,7 +256,7 @@ export default function HomePage() {
               style={{ fontFamily: 'var(--font-jost)' }}
             >
               Three championship padel courts and one dedicated pickleball court,
-              all lit for night play and open 6am to 10pm, every day.
+              designed for both competitive play and relaxed social matches.
             </p>
           </div>
 
@@ -270,7 +272,7 @@ export default function HomePage() {
                 sizes="(max-width: 640px) 100vw, 50vw"
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
-                <span className="label-overline text-[var(--serve-cream)]">
+                <span className="label-overline text-[var(--serve-cream)] text-xs font-bold tracking-widest">
                   Padel Courts × 3
                 </span>
               </div>
@@ -286,7 +288,7 @@ export default function HomePage() {
                 sizes="(max-width: 640px) 100vw, 50vw"
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
-                <span className="label-overline text-[var(--serve-cream)]">
+                <span className="label-overline text-[var(--serve-cream)] text-xs font-bold tracking-widest">
                   Pickleball Court × 1
                 </span>
               </div>
@@ -301,21 +303,88 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="btn-luxury btn-luxury-light"
             >
-              <span>Book Your Court</span>
+              <span>Book a Court</span>
             </a>
           </div>
         </div>
 
-        {/* Editorial floating image */}
-        <div className="hidden lg:block absolute bottom-0 right-0 w-56 xl:w-72 h-auto pointer-events-none select-none" style={{ zIndex: 1 }}>
-          <Image
-            src={asset('/assets/padel-player-racket.webp')}
-            alt="Professional padel player holding racket"
-            width={288}
-            height={420}
-            className="object-cover opacity-20"
-            sizes="288px"
-          />
+      </section>
+
+      {/* ─── STATEMENT SECTION ─── */}
+      <section className="bg-[var(--serve-dark)] py-14 md:py-20 overflow-hidden">
+        <div className="max-w-screen-xl mx-auto px-6 lg:px-12 text-center">
+          <div className="flex justify-center mb-10">
+            <div style={{ width: '60px', height: '1px', backgroundColor: 'var(--serve-amber)' }} />
+          </div>
+          <h2
+            className="fade-up"
+            style={{
+              fontFamily: 'var(--font-cormorant)',
+              fontSize: 'clamp(3.5rem, 9vw, 10rem)',
+              fontWeight: 300,
+              color: 'var(--serve-cream)',
+              lineHeight: 1,
+              letterSpacing: '-0.02em',
+            }}
+          >
+            Play hard.{' '}
+            <span style={{ fontStyle: 'italic', color: 'var(--serve-amber)' }}>Eat well.</span>
+            <br />
+            Stay longer.
+          </h2>
+          <p
+            className="fade-up delay-200 label-overline mt-10"
+            style={{ color: 'var(--serve-cream)', opacity: 0.4, letterSpacing: '0.3em' }}
+          >
+            2nd Floor, 185 Ridge Rd · Umhlanga · Open 6am – 10pm Daily
+          </p>
+        </div>
+      </section>
+
+      {/* ─── SECTION 3.5: HOW IT WORKS ─── */}
+      <section className="bg-[var(--serve-warm)] section-padding-sm overflow-hidden">
+        <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
+          <div className="text-center mb-12">
+            <p className="label-overline text-[var(--serve-green)] opacity-70 mb-4 fade-up">
+              Getting Started
+            </p>
+            <h2
+              className="text-display-md text-[var(--serve-dark)] font-light fade-up delay-100"
+              style={{ fontFamily: 'var(--font-cormorant)' }}
+            >
+              How it works
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {[
+              { num: '01', title: 'Book via Playtomic', desc: 'Reserve your court online in seconds.' },
+              { num: '02', title: 'Show up', desc: 'Arrive at 2nd Floor, 185 Ridge Rd, Umhlanga.' },
+              { num: '03', title: 'Play', desc: 'Take to the court and give it everything.' },
+              { num: '04', title: 'Eat & Stay', desc: 'Refuel with food, drinks, and good company.' },
+            ].map(({ num, title, desc }) => (
+              <div key={num} className="flex flex-col gap-3 fade-up">
+                <span
+                  className="text-display-sm text-[var(--serve-green)] font-light leading-none"
+                  style={{ fontFamily: 'var(--font-cormorant)', opacity: 0.4 }}
+                >
+                  {num}
+                </span>
+                <h3
+                  className="text-[var(--serve-dark)] font-medium text-sm tracking-wide uppercase"
+                  style={{ fontFamily: 'var(--font-jost)', letterSpacing: '0.1em' }}
+                >
+                  {title}
+                </h3>
+                <p
+                  className="text-[var(--serve-dark)] opacity-60 text-sm leading-relaxed"
+                  style={{ fontFamily: 'var(--font-jost)' }}
+                >
+                  {desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -345,7 +414,7 @@ export default function HomePage() {
         </div>
 
         {/* Caption */}
-        <p className="label-overline text-[var(--serve-cream)] opacity-50 text-center mt-10 px-6">
+        <p className="label-overline text-white opacity-90 text-center mt-10 px-6">
           A place to be seen. A place to belong.
         </p>
 
@@ -366,7 +435,7 @@ export default function HomePage() {
 
               <p
                 className="text-script-md text-[var(--serve-dark)] mb-8 leading-snug"
-                style={{ fontFamily: 'var(--font-great-vibes)' }}
+                style={{ fontFamily: 'var(--font-cormorant), serif', fontStyle: 'italic' }}
               >
                 Linger a little longer
               </p>
@@ -375,13 +444,12 @@ export default function HomePage() {
                 className="text-sm leading-relaxed text-[var(--serve-dark)] opacity-75 mb-10"
                 style={{ fontFamily: 'var(--font-jost)', maxWidth: '38ch' }}
               >
-                From espresso at sunrise to wood-fired pizza under the string
-                lights, our kitchen keeps pace with your day. Light meals, fresh
-                flavours, and a coffee that earns its place on any terrace in the
-                world. Pull up a chair — you&apos;re not in a rush.
+                From your first coffee to your last drink, everything here is designed to stretch the moment.
+                Wood-fired pizzas, simple, well-made dishes, and a setting that invites you to slow down without thinking twice.
+                Because at SERVE, the best part isn&apos;t just the game, it&apos;s everything that comes after.
               </p>
 
-              <Link href="/contact" className="btn-luxury btn-luxury-green">
+              <Link href="/menu" className="btn-luxury btn-luxury-green">
                 <span>View Menu</span>
               </Link>
             </div>
@@ -421,7 +489,7 @@ export default function HomePage() {
 
       {/* ─── SECTION 6: FAMILY ─── */}
       <section
-        className="bg-[var(--serve-warm)] section-padding overflow-hidden"
+        className="bg-[var(--serve-warm)] section-padding-sm overflow-hidden"
       >
         <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
           {/* Header */}
@@ -442,8 +510,7 @@ export default function HomePage() {
               style={{ fontFamily: 'var(--font-jost)' }}
             >
               While you take on the court, the little ones have a world of their
-              own. Our kids&apos; play area means the whole family can make a day of
-              it. No shortcuts on the fun.
+              own. Our kids&apos; play area means the whole family can make a day of it.
             </p>
           </div>
 
@@ -474,23 +541,23 @@ export default function HomePage() {
       {/* ─── SECTION 7: EVENTS CTA BANNER ─── */}
       <section className="bg-[var(--serve-green)] section-padding-sm">
         <div className="max-w-screen-md mx-auto px-6 text-center">
-          <p className="label-overline text-[var(--serve-cream)] opacity-60 mb-6 fade-up">
+          <p className="label-overline text-[var(--serve-cream)] opacity-60 mb-6 fade-up in-view">
             Private Events
           </p>
           <h2
-            className="text-display-lg text-[var(--serve-cream)] font-light mb-6 fade-up delay-100"
+            className="text-display-lg text-[var(--serve-cream)] font-light mb-6 fade-up in-view delay-100"
             style={{ fontFamily: 'var(--font-cormorant)' }}
           >
             Make it memorable
           </h2>
           <p
-            className="text-sm text-[var(--serve-cream)] opacity-70 max-w-md mx-auto leading-relaxed mb-10 fade-up delay-200"
+            className="text-sm text-[var(--serve-cream)] opacity-70 max-w-md mx-auto leading-relaxed mb-10 fade-up in-view delay-200"
             style={{ fontFamily: 'var(--font-jost)' }}
           >
-            Birthday parties, corporate days, kids&apos; celebrations — we handle the
+            Birthday parties, corporate days, kids&apos; celebrations. We handle the
             venue, you handle the memories.
           </p>
-          <div className="fade-up delay-300">
+          <div className="fade-up in-view delay-300">
             <Link href="/events" className="btn-luxury btn-luxury-light">
               <span>Enquire About Events</span>
             </Link>
@@ -498,38 +565,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 8: BOTTOM CTA / FIND US ─── */}
-      <section className="bg-[var(--serve-cream)] section-padding-sm">
-        <div className="max-w-screen-md mx-auto px-6 text-center">
-          <p className="label-overline text-[var(--serve-green)] mb-6 fade-up">
-            Find Us
-          </p>
-          <h2
-            className="text-display-md text-[var(--serve-dark)] font-light mb-3 fade-up delay-100"
-            style={{ fontFamily: 'var(--font-cormorant)' }}
-          >
-            2nd Floor, 185 Ridge Rd
-          </h2>
-          <p
-            className="text-sm text-[var(--serve-dark)] opacity-60 mb-2 fade-up delay-200"
-            style={{ fontFamily: 'var(--font-jost)', letterSpacing: '0.12em' }}
-          >
-            Umhlanga · Open 6am – 10pm Daily
-          </p>
-          <a
-            href="tel:0615451063"
-            className="block text-sm text-[var(--serve-green)] mb-10 fade-up delay-300 hover:opacity-70 transition-opacity"
-            style={{ fontFamily: 'var(--font-jost)', letterSpacing: '0.15em' }}
-          >
-            061 545 1063
-          </a>
-          <div className="fade-up delay-400">
-            <Link href="/contact" className="btn-luxury btn-luxury-dark">
-              <span>Get in Touch</span>
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   )
 }

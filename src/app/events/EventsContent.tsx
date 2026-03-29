@@ -38,22 +38,22 @@ function useScrollReveal() {
 
 const eventTypes = [
   {
-    image: '/assets/kids-play-night.webp',
-    alt: 'Kids playing outside at SERVE under string lights at night',
+    image: '/assets/Adut.png',
+    alt: 'Birthday party at SERVE',
     title: 'Birthday Parties',
-    body: 'Mark the occasion on the court. We set the stage \u2014 courts, catering, atmosphere. You just show up and celebrate. Available for all ages, all styles.',
+    body: 'Mark the occasion on the court. We set the stage: courts, catering, atmosphere. You just show up and celebrate. Available for all ages, all styles.',
   },
   {
-    image: '/assets/dining-terrace.webp',
-    alt: 'People dining at the outdoor terrace beside padel courts',
+    image: '/assets/Corporate.png',
+    alt: 'Corporate event at SERVE',
+    title: 'Corporate Events',
+    body: 'Team-building, client entertainment, or company days. Padel is the perfect equaliser. Break the ice, build the team, and do it somewhere worth dressing for.',
+  },
+  {
+    image: '/assets/Kids.png',
+    alt: "Kids' celebration at SERVE",
     title: "Kids' Celebrations",
     body: "A padel party the kids will talk about for months. Supervised play, our kids\u2019 area, food they\u2019ll actually eat, and memories worth keeping.",
-  },
-  {
-    image: '/assets/padel-corridor.webp',
-    alt: 'Players walking through the SERVE padel corridors',
-    title: 'Corporate Events',
-    body: 'Team-building, client entertainment, or company days \u2014 padel is the perfect equaliser. Break the ice, build the team, and do it somewhere worth dressing for.',
   },
 ]
 
@@ -75,43 +75,36 @@ export default function EventsContent() {
         style={{ height: 'calc(80vh + 80px)', minHeight: '640px', paddingTop: '80px' }}
       >
         <Image
-          src={asset('/assets/court-night-lights.webp')}
+          src={asset('/assets/g.png')}
           alt="Padel court at night with SRV sign illuminated"
           fill
           priority
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(20,20,20,0.5) 0%, rgba(20,20,20,0.72) 100%)',
-          }}
-        />
+        <div className="video-overlay absolute inset-0" />
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <p className="label-overline text-white opacity-70 mb-6 fade-up in-view">Private Events</p>
+          <p className="label-overline text-[var(--serve-cream)] opacity-70 mb-6 fade-up in-view">Private Events</p>
           <h1
-            className="text-display-lg text-white mb-6 fade-up in-view delay-200"
-            style={{
-              fontFamily: 'var(--font-cormorant), serif',
-              fontWeight: 300,
-              fontStyle: 'italic',
-            }}
+            className="text-display-lg text-[var(--serve-cream)] font-light mb-6 fade-up in-view delay-200"
+            style={{ fontFamily: 'var(--font-cormorant), serif' }}
           >
             Your event. Our courts.
-            <br />Unforgettable.
+            <br /><span style={{ fontStyle: 'italic', color: 'var(--serve-amber)' }}>Unforgettable.</span>
           </h1>
           <p
-            className="text-white fade-up in-view delay-400"
+            className="text-[var(--serve-cream)] fade-up in-view delay-400"
             style={{
-              fontFamily: 'var(--font-great-vibes), cursive',
-              fontSize: 'clamp(1.8rem, 3.5vw, 3rem)',
-              opacity: 0.85,
+              fontFamily: 'var(--font-jost), sans-serif',
+              fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+              opacity: 0.8,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              fontWeight: 300,
             }}
           >
-            Let&apos;s make something special
+            Let&apos;s make something special.
           </p>
         </div>
       </section>
@@ -126,7 +119,7 @@ export default function EventsContent() {
             className="text-display-md mb-8 fade-up delay-200"
             style={{
               fontFamily: 'var(--font-cormorant), serif',
-              fontWeight: 400,
+              fontWeight: 300,
               color: 'var(--serve-green)',
             }}
           >
@@ -144,7 +137,7 @@ export default function EventsContent() {
           >
             SERVE offers a one-of-a-kind event experience in the heart of Umhlanga. Whether you&apos;re
             planning a birthday party, a team-building day, a kids&apos; celebration, or a corporate
-            function &mdash; our facility transforms beautifully for any occasion. Padel as the centrepiece.
+            function. Our facility transforms beautifully for any occasion. Padel as the centrepiece.
             Style as standard.
           </p>
         </div>
@@ -219,7 +212,7 @@ export default function EventsContent() {
                 style={{
                   fontFamily: 'var(--font-cormorant), serif',
                   fontSize: 'clamp(1.6rem, 3vw, 2.6rem)',
-                  fontWeight: 400,
+                  fontWeight: 300,
                   fontStyle: 'italic',
                   lineHeight: 1.4,
                   color: 'var(--serve-cream)',
@@ -241,16 +234,15 @@ export default function EventsContent() {
                   >
                     <span
                       style={{
-                        fontFamily: 'var(--font-cormorant), serif',
-                        fontSize: '1.2rem',
-                        color: 'var(--serve-sage)',
-                        lineHeight: 1,
-                        marginTop: '0.2rem',
+                        width: '6px',
+                        height: '6px',
+                        borderRadius: '50%',
+                        backgroundColor: 'var(--serve-sage)',
+                        marginTop: '0.55rem',
                         flexShrink: 0,
+                        display: 'inline-block',
                       }}
-                    >
-                      &mdash;
-                    </span>
+                    />
                     <span
                       style={{
                         fontFamily: 'var(--font-jost), sans-serif',
@@ -270,29 +262,14 @@ export default function EventsContent() {
         </div>
       </section>
 
-      {/* ─── 5. EDITORIAL IMAGE BREAK ─── */}
-      <div className="relative w-full scale-reveal" style={{ height: '55vh', minHeight: '340px' }}>
-        <Image
-          src={asset('/assets/srv-logo-mural.webp')}
-          alt="SRV tropical botanical logo mural"
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        {/* Subtle overlay to keep it editorial */}
-        <div
-          className="absolute inset-0"
-          style={{ background: 'rgba(20, 20, 20, 0.18)' }}
-        />
-      </div>
-
       {/* ─── 6. ENQUIRE CTA ─── */}
       <section className="section-padding-sm px-6" style={{ backgroundColor: 'var(--serve-cream)' }}>
         <div className="max-w-2xl mx-auto text-center">
           <p
             className="fade-up mb-4"
             style={{
-              fontFamily: 'var(--font-great-vibes), cursive',
+              fontFamily: 'var(--font-cormorant), serif',
+              fontStyle: 'italic',
               fontSize: 'clamp(1.8rem, 3.5vw, 3rem)',
               color: 'var(--serve-sage)',
             }}
@@ -303,7 +280,7 @@ export default function EventsContent() {
             className="text-display-md mb-6 fade-up delay-200"
             style={{
               fontFamily: 'var(--font-cormorant), serif',
-              fontWeight: 400,
+              fontWeight: 300,
               color: 'var(--serve-green)',
             }}
           >

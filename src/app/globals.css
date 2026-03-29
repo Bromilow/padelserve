@@ -6,8 +6,9 @@
   --serve-green: #1C3A2A;
   --serve-forest: #2A4A35;
   --serve-sage: #7A9E7E;
+  --serve-amber: #C08B3A;
   --serve-cream: #F5F0E8;
-  --serve-warm: #E8DDD0;
+  --serve-warm: #EAE0D4;
   --serve-dark: #141414;
   --serve-charcoal: #2A2A2A;
 }
@@ -296,12 +297,31 @@ body {
 
 /* ─── Video overlay ─── */
 .video-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(20, 20, 20, 0.2) 0%,
-    rgba(20, 20, 20, 0.4) 50%,
-    rgba(20, 20, 20, 0.65) 100%
-  );
+  background:
+    linear-gradient(to bottom, rgba(20,20,20,0.65) 0%, rgba(20,20,20,0.45) 40%, rgba(20,20,20,0.75) 100%),
+    linear-gradient(to right, rgba(20,20,20,0.4) 0%, transparent 50%, rgba(20,20,20,0.4) 100%);
+}
+
+/* ─── Hero word reveal ─── */
+.hero-word {
+  display: block;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: wordReveal 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes wordReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Amber line ─── */
+.amber-line {
+  width: 0;
+  height: 1px;
+  background: var(--serve-amber);
+  animation: lineGrow 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+}
+@keyframes lineGrow {
+  to { width: 60px; }
 }
 
 /* ─── Marquee animation ─── */

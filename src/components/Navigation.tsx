@@ -12,9 +12,10 @@ const BOOKING_URL =
 
 const navLinks = [
   { label: 'Play', href: '/#play' },
-  { label: 'Eat & Drink', href: '/#eat' },
-  { label: 'Events', href: '/events' },
   { label: 'About', href: '/about' },
+  { label: 'Events', href: '/events' },
+  { label: 'Eat & Drink', href: '/menu' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 const overlayVariants = {
@@ -49,16 +50,7 @@ const linkVariants = {
 }
 
 export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   useEffect(() => {
     if (menuOpen) {
@@ -86,23 +78,20 @@ export default function Navigation() {
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          backgroundColor: scrolled
-            ? 'rgba(28, 58, 42, 0.92)'
-            : 'transparent',
-          backdropFilter: scrolled ? 'blur(12px)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
+          backgroundColor: 'var(--serve-cream)',
+          borderBottom: '1px solid rgba(28,58,42,0.12)',
         }}
       >
         <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <Link href="/" onClick={closeMenu}>
               <Image
-                src={asset('/assets/webp/1.webp')}
+                src={asset('/assets/webp/serve.webp')}
                 alt="SERVE Padel & Play"
-                width={89}
-                height={48}
-                style={{ width: 'auto', height: '44px' }}
+                width={160}
+                height={80}
+                style={{ width: 'auto', height: '72px' }}
                 priority
               />
             </Link>
@@ -113,7 +102,7 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="nav-link text-white opacity-90 hover:opacity-100 transition-opacity duration-300"
+                  className="nav-link text-[var(--serve-dark)] opacity-80 hover:opacity-100 transition-opacity duration-300"
                   onClick={(e) => handleNavClick(e, link.href)}
                 >
                   {link.label}
@@ -127,7 +116,7 @@ export default function Navigation() {
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-luxury btn-luxury-light"
+                className="btn-luxury btn-luxury-dark"
               >
                 <span>Book a Court</span>
               </a>
@@ -141,14 +130,14 @@ export default function Navigation() {
               aria-expanded={menuOpen}
             >
               <span
-                className="block w-6 h-px bg-white transition-all duration-400"
+                className="block w-6 h-px bg-black transition-all duration-400"
                 style={{
                   transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'none',
                   transition: 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 }}
               />
               <span
-                className="block w-6 h-px bg-white transition-all duration-400"
+                className="block w-6 h-px bg-black transition-all duration-400"
                 style={{
                   opacity: menuOpen ? 0 : 1,
                   transform: menuOpen ? 'translateX(-8px)' : 'none',
@@ -157,7 +146,7 @@ export default function Navigation() {
                 }}
               />
               <span
-                className="block w-6 h-px bg-white"
+                className="block w-6 h-px bg-black"
                 style={{
                   transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none',
                   transition: 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -186,7 +175,7 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-white block text-center"
+                    className="text-[var(--serve-cream)] block text-center"
                     style={{
                       fontFamily: 'var(--font-cormorant), serif',
                       fontSize: 'clamp(2rem, 6vw, 3rem)',
@@ -204,7 +193,7 @@ export default function Navigation() {
                   href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-luxury btn-luxury-light"
+                  className="btn-luxury btn-luxury-dark"
                   onClick={closeMenu}
                 >
                   <span>Book a Court</span>
@@ -215,9 +204,10 @@ export default function Navigation() {
             {/* Script accent */}
             <motion.p
               variants={linkVariants}
-              className="absolute bottom-12 text-white"
+              className="absolute bottom-12 text-[var(--serve-cream)]"
               style={{
-                fontFamily: 'var(--font-great-vibes), cursive',
+                fontFamily: 'var(--font-cormorant), serif',
+                fontStyle: 'italic',
                 fontSize: '1.5rem',
                 opacity: 0.4,
               }}
