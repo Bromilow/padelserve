@@ -87,7 +87,7 @@ export default function ContactContent() {
     <div ref={pageRef}>
       {/* ─── 1. PAGE HEADER ─── */}
       <section
-        className="relative flex items-center justify-center"
+        className="relative flex items-center justify-center overflow-hidden"
         style={{ height: 'calc(80vh + 80px)', minHeight: '640px', paddingTop: '80px' }}
       >
         <Image

@@ -193,7 +193,7 @@ export default function Navigation() {
                   href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-luxury btn-luxury-dark"
+                  className="btn-luxury btn-luxury-light"
                   onClick={closeMenu}
                 >
                   <span>Book a Court</span>
@@ -204,7 +204,7 @@ export default function Navigation() {
             {/* Script accent */}
             <motion.p
               variants={linkVariants}
-              className="absolute bottom-12 text-[var(--serve-cream)]"
+              className="absolute bottom-20 text-[var(--serve-cream)]"
               style={{
                 fontFamily: 'var(--font-cormorant), serif',
                 fontStyle: 'italic',
