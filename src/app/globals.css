@@ -23,12 +23,14 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background-color: var(--serve-cream);
   color: var(--serve-dark);
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ─── Custom Scrollbar ─── */
@@ -329,6 +331,9 @@ body {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+.marquee-track {
+  will-change: transform;
+}
 .marquee-strip:hover .marquee-track {
   animation-play-state: paused;
 }
@@ -351,5 +356,67 @@ body {
 @media (max-width: 768px) {
   .mobile-nav-open {
     overflow: hidden;
+  }
+}
+
+/* ─── Touch target optimization ─── */
+@media (max-width: 768px) {
+  .btn-luxury {
+    min-height: 44px;
+    padding: 0.875rem 2rem;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .nav-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ─── Video object position on mobile ─── */
+@media (max-width: 768px) {
+  video {
+    object-position: center center;
+  }
+}
+
+/* ─── Image hover zoom — disable on touch devices ─── */
+@media (hover: none) {
+  .img-hover-zoom img {
+    transition: none;
+  }
+  .img-hover-zoom:hover img {
+    transform: none;
+  }
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up, .fade-in, .reveal-left, .reveal-right, .scale-reveal {
+    transition: opacity 0.3s ease;
+    transform: none !important;
+  }
+  .hero-word {
+    animation-duration: 0.3s;
+  }
+  .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+/* ─── Focus visible ─── */
+:focus-visible {
+  outline: 2px solid var(--serve-amber);
+  outline-offset: 2px;
+}
+
+/* ─── Mobile font floor ─── */
+@media (max-width: 390px) {
+  .label-overline {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
   }
 }

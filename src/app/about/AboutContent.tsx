@@ -126,11 +126,18 @@ export default function AboutContent() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             {/* Left: tall portrait image */}
             <div className="reveal-left" style={{ aspectRatio: '3/4', position: 'relative', overflow: 'hidden' }}>
-              {slideshowImages.map((src, i) => (
+              {slideshowImages.map((src, i) => {
+                const slideshowAlts = [
+                  'Padel players on court at SERVE Umhlanga',
+                  'Outdoor terrace dining area at SERVE',
+                  'Night view of SERVE padel courts under floodlights',
+                  'Friends socialising at SERVE after a match',
+                ]
+                return (
                 <Image
                   key={src}
                   src={asset(src)}
-                  alt="SERVE Padel & Play"
+                  alt={slideshowAlts[i] || 'SERVE Padel & Play facility'}
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -141,13 +148,14 @@ export default function AboutContent() {
                     position: 'absolute',
                   }}
                 />
-              ))}
+              )})}
               {/* Slide indicators */}
               <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
                 {slideshowImages.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setSlideIndex(i)}
+                    aria-label={`Go to slide ${i + 1}`}
                     style={{
                       width: i === slideIndex ? '20px' : '6px',
                       height: '6px',

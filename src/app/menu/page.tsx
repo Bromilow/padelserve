@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Eat & Drink | SERVE Padel & Play Umhlanga',
     description: 'Wood-fired pizzas, craft cocktails, and a terrace worth lingering on. The SERVE kitchen and bar, Umhlanga.',
-    url: 'https://bromilow.github.io/padelserve/menu',
+    url: 'https://servepadel.co.za/menu',
     type: 'website',
     images: [{ url: '/assets/Food.png', width: 1200, height: 630, alt: 'SERVE Padel & Play — Eat & Drink, Umhlanga' }],
   },
-  alternates: { canonical: '/menu' },
+  alternates: { canonical: 'https://servepadel.co.za/menu' },
 }
 
 export default function MenuPage() {

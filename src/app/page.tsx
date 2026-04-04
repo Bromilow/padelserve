@@ -65,11 +65,11 @@ const galleryImages = [
   { src: '/assets/kids-play-night.webp', alt: 'Kids playing at night under string lights' },
   { src: '/assets/serve-sign-hedge.webp', alt: 'SERVE padel sign on green hedge' },
   { src: '/assets/court-night-lights.webp', alt: 'Padel court at night with SRV sign' },
-  { src: '/assets/3.png', alt: 'SERVE' },
-  { src: '/assets/4.png', alt: 'SERVE' },
-  { src: '/assets/5.jpg', alt: 'SERVE' },
-  { src: '/assets/7.jpg', alt: 'SERVE' },
-  { src: '/assets/8.jpg', alt: 'SERVE' },
+  { src: '/assets/3.png', alt: 'Guests enjoying drinks on the SERVE terrace at sunset' },
+  { src: '/assets/4.png', alt: 'Aerial view of SERVE padel courts and facility' },
+  { src: '/assets/5.jpg', alt: 'Players mid-rally on a floodlit padel court' },
+  { src: '/assets/7.jpg', alt: 'Friends celebrating after a padel match at SERVE' },
+  { src: '/assets/8.jpg', alt: 'Wood-fired pizza oven and kitchen at SERVE' },
 ]
 
 export default function HomePage() {
@@ -89,6 +89,7 @@ export default function HomePage() {
           loop
           playsInline
           preload="auto"
+          poster="/assets/court-night-lights.webp"
         />
 
         {/* Overlay */}
@@ -407,6 +408,7 @@ export default function HomePage() {
                   fill
                   className="object-cover"
                   sizes="300px"
+                  loading="lazy"
                 />
               </div>
             ))}

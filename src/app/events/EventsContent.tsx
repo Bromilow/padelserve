@@ -167,6 +167,7 @@ export default function EventsContent() {
                     fill
                     className="object-cover object-center transition-transform duration-700 ease-luxury group-hover:scale-[1.04]"
                     sizes="(max-width: 768px) 100vw, 33vw"
+                    loading="lazy"
                   />
                 </div>
 

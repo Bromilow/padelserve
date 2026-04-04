@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact SERVE Padel & Play | Umhlanga',
     description: 'Get in touch with SERVE Padel & Play. Located at 2nd Floor, 185 Ridge Rd, Umhlanga. Call 061 545 1063 or enquire online. Open 6am–10pm daily.',
-    url: 'https://bromilow.github.io/padelserve/contact',
+    url: 'https://servepadel.co.za/contact',
     type: 'website',
     images: [{ url: '/assets/serve-sign-hedge.webp', width: 1200, height: 630, alt: 'SERVE Padel & Play Umhlanga' }],
   },
-  alternates: { canonical: '/contact' },
+  alternates: { canonical: 'https://servepadel.co.za/contact' },
 }
 
 export default function ContactPage() {

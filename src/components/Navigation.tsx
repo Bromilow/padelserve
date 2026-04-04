@@ -91,7 +91,7 @@ export default function Navigation() {
                 alt="SERVE Padel & Play"
                 width={160}
                 height={80}
-                style={{ width: 'auto', height: '72px' }}
+                style={{ width: 'auto', height: 'clamp(48px, 10vw, 72px)' }}
                 priority
               />
             </Link>
@@ -125,7 +125,7 @@ export default function Navigation() {
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="md:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 relative z-50"
+              className="md:hidden flex flex-col justify-center items-center gap-[5px] w-11 h-11 relative z-50"
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}
             >

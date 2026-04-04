@@ -26,8 +26,6 @@ const greatVibes = Great_Vibes({
   display: 'swap',
 })
 
-const base = process.env.NODE_ENV === 'production' ? '/padelserve' : ''
-
 export const metadata: Metadata = {
   title: 'SERVE Padel & Play | Umhlanga\'s Premier Padel Club',
   description:
@@ -45,9 +43,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'SERVE Padel & Play' }],
   creator: 'SERVE Padel & Play',
   publisher: 'SERVE Padel & Play',
-  metadataBase: new URL('https://bromilow.github.io/padelserve'),
+  metadataBase: new URL('https://servepadel.co.za'),
   alternates: {
-    canonical: 'https://bromilow.github.io/padelserve',
+    canonical: 'https://servepadel.co.za',
   },
   openGraph: {
     type: 'website',
@@ -75,11 +73,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: `${base}/assets/favicon/favicon-32x32.png`, sizes: '32x32', type: 'image/png' },
-      { url: `${base}/assets/favicon/favicon-16x16.png`, sizes: '16x16', type: 'image/png' },
+      { url: '/assets/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/assets/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
-    shortcut: `${base}/assets/favicon/favicon.ico`,
-    apple: `${base}/assets/favicon/apple-touch-icon.png`,
+    shortcut: '/assets/favicon/favicon.ico',
+    apple: '/assets/favicon/apple-touch-icon.png',
   },
   robots: {
     index: true,
@@ -111,7 +109,7 @@ export default function RootLayout({
               "@type": "SportsActivityLocation",
               "name": "SERVE Padel & Play",
               "description": "Umhlanga's premier padel club with 3 championship padel courts and 1 pickleball court. Open 6am–10pm daily.",
-              "url": "https://bromilow.github.io/padelserve",
+              "url": "https://servepadel.co.za",
               "telephone": "+27615451063",
               "address": {
                 "@type": "PostalAddress",
@@ -134,7 +132,7 @@ export default function RootLayout({
               },
               "sport": ["Padel", "Pickleball"],
               "priceRange": "$$",
-              "image": "https://bromilow.github.io/padelserve/assets/court-night-lights.webp",
+              "image": "https://servepadel.co.za/assets/court-night-lights.webp",
               "sameAs": ["https://www.instagram.com/servepadel"]
             })
           }}
