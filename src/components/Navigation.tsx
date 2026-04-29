@@ -1,11 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { asset } from '@/lib/assetPath'
+import { useAuth } from '@/hooks/useAuth'
+import { supabase } from '@/lib/supabase'
 
 const BOOKING_URL =
   'https://app.playtomic.com/tenant/c9825c68-9da4-4cc4-a065-06ea58087f85?utm_source=app_ios&utm_campaign=share&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGngd9wn58fSDwPnOr_qB-ckJuekphFMIAt1taj2AnenpRp9ew3MykolGyULcw_aem_s3FqvC8jKTCbMpbwv-VupA'
@@ -14,6 +16,7 @@ const navLinks = [
   { label: 'Play', href: '/#play' },
   { label: 'About', href: '/about' },
   { label: 'Events', href: '/events' },
+  { label: 'Yoga', href: '/yoga' },
   { label: 'Eat & Drink', href: '/menu' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -62,7 +65,27 @@ export default function Navigation() {
   }, [menuOpen])
 
   const pathname = usePathname()
+  const router = useRouter()
+  const { user, loading: authLoading } = useAuth()
+  const [accountMenuOpen, setAccountMenuOpen] = useState(false)
+  const accountMenuRef = useRef<HTMLDivElement>(null)
   const closeMenu = () => setMenuOpen(false)
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (accountMenuRef.current && !accountMenuRef.current.contains(e.target as Node)) {
+        setAccountMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  async function handleSignOut() {
+    await supabase.auth.signOut()
+    setAccountMenuOpen(false)
+    router.push('/')
+  }
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('/#') && pathname === '/') {
@@ -121,6 +144,54 @@ export default function Navigation() {
                 <span>Book a Court</span>
               </a>
             </div>
+
+            {/* Desktop Auth */}
+            {!authLoading && (
+              <div className="hidden md:flex items-center ml-4 pl-4" style={{ borderLeft: '1px solid rgba(28,58,42,0.15)' }}>
+                {!user ? (
+                  <Link
+                    href="/login"
+                    className="nav-link text-[var(--serve-dark)] opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  >
+                    Sign In
+                  </Link>
+                ) : (
+                  <div ref={accountMenuRef} style={{ position: 'relative' }}>
+                    <button
+                      onClick={() => setAccountMenuOpen(prev => !prev)}
+                      className="nav-link text-[var(--serve-dark)] opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    >
+                      My Account
+                    </button>
+                    {accountMenuOpen && (
+                      <div style={{
+                        position: 'absolute',
+                        top: 'calc(100% + 1rem)',
+                        right: 0,
+                        backgroundColor: 'var(--serve-cream)',
+                        border: '1px solid rgba(28,58,42,0.15)',
+                        minWidth: '140px',
+                        zIndex: 100,
+                      }}>
+                        <Link
+                          href="/profile"
+                          onClick={() => setAccountMenuOpen(false)}
+                          className="nav-link block px-4 py-3 text-[var(--serve-dark)] opacity-70 hover:opacity-100"
+                        >
+                          Profile
+                        </Link>
+                        <button
+                          onClick={handleSignOut}
+                          className="nav-link w-full text-left px-4 py-3 text-[var(--serve-dark)] opacity-70 hover:opacity-100"
+                        >
+                          Sign Out
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Mobile Hamburger */}
             <button
@@ -199,6 +270,56 @@ export default function Navigation() {
                   <span>Book a Court</span>
                 </a>
               </motion.div>
+              {!authLoading && (
+                <motion.div variants={linkVariants} className="mt-2">
+                  {!user ? (
+                    <Link
+                      href="/login"
+                      onClick={closeMenu}
+                      className="text-[var(--serve-cream)] block text-center"
+                      style={{
+                        fontFamily: 'var(--font-cormorant)',
+                        fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+                        fontWeight: 400,
+                        fontStyle: 'italic',
+                        letterSpacing: '0.05em',
+                      }}
+                    >
+                      Sign In
+                    </Link>
+                  ) : (
+                    <div className="flex flex-col items-center gap-3">
+                      <Link
+                        href="/profile"
+                        onClick={closeMenu}
+                        className="text-[var(--serve-cream)] block text-center"
+                        style={{
+                          fontFamily: 'var(--font-cormorant)',
+                          fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+                          fontWeight: 400,
+                          fontStyle: 'italic',
+                          letterSpacing: '0.05em',
+                        }}
+                      >
+                        My Account
+                      </Link>
+                      <button
+                        onClick={() => { handleSignOut(); closeMenu() }}
+                        style={{
+                          fontFamily: 'var(--font-jost)',
+                          fontSize: '0.65rem',
+                          letterSpacing: '0.3em',
+                          textTransform: 'uppercase',
+                          color: 'var(--serve-cream)',
+                          opacity: 0.5,
+                        }}
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  )}
+                </motion.div>
+              )}
             </nav>
 
             {/* Script accent */}
