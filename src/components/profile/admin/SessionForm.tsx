@@ -24,17 +24,16 @@ export default function SessionForm({ initial, onSuccess, onCancel }: SessionFor
     e.preventDefault()
     setLoading(true)
     setError('')
-    const payload = {
+    const basePayload = {
       title, instructor, date,
       start_time: startTime,
       duration_minutes: Number(duration),
       capacity: Number(capacity),
       is_active: true,
-      is_recurring: false,
     }
     const { error } = initial?.id
-      ? await supabase.from('sessions').update(payload).eq('id', initial.id)
-      : await supabase.from('sessions').insert(payload)
+      ? await supabase.from('sessions').update(basePayload).eq('id', initial.id)
+      : await supabase.from('sessions').insert({ ...basePayload, is_recurring: false })
     if (error) { setError('Failed to save session.'); setLoading(false); return }
     onSuccess()
   }

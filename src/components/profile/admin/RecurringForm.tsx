@@ -48,20 +48,21 @@ export default function RecurringForm({ initial, onSuccess, onCancel }: Recurrin
       templateId = data.id
     }
 
-    const fullTemplate: RecurrenceTemplate = {
-      id: templateId, title, instructor,
-      day_of_week: Number(dayOfWeek),
-      start_time: startTime,
-      duration_minutes: Number(duration),
-      capacity: Number(capacity),
-      is_active: true,
-      created_at: new Date().toISOString(),
-    }
-
-    const instances = generateSessionInstances(fullTemplate, 8)
-    if (instances.length > 0) {
-      const { error } = await supabase.from('sessions').insert(instances)
-      if (error) { setError('Template saved but session generation failed.'); setLoading(false); return }
+    if (!initial?.id) {
+      const fullTemplate: RecurrenceTemplate = {
+        id: templateId, title, instructor,
+        day_of_week: Number(dayOfWeek),
+        start_time: startTime,
+        duration_minutes: Number(duration),
+        capacity: Number(capacity),
+        is_active: true,
+        created_at: new Date().toISOString(),
+      }
+      const instances = generateSessionInstances(fullTemplate, 8)
+      if (instances.length > 0) {
+        const { error } = await supabase.from('sessions').insert(instances)
+        if (error) { setError('Template saved but session generation failed.'); setLoading(false); return }
+      }
     }
 
     onSuccess()
@@ -74,7 +75,7 @@ export default function RecurringForm({ initial, onSuccess, onCancel }: Recurrin
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-5 max-w-lg" style={{ border: '1px solid rgba(28,58,42,0.15)', backgroundColor: 'white' }}>
       <p className="label-overline" style={{ color: 'var(--serve-sage)' }}>{initial?.id ? 'Edit recurring schedule' : 'New recurring schedule'}</p>
-      <p style={{ fontSize: '0.8rem', opacity: 0.6 }}>Generates sessions for the next 8 weeks automatically.</p>
+      {!initial?.id && <p style={{ fontSize: '0.8rem', opacity: 0.6 }}>Generates sessions for the next 8 weeks automatically.</p>}
       <div className="grid grid-cols-2 gap-4">
         <div className="col-span-2">{fieldLabel('Title')}<input className="form-field" value={title} onChange={e => setTitle(e.target.value)} required /></div>
         <div className="col-span-2">{fieldLabel('Instructor')}<input className="form-field" value={instructor} onChange={e => setInstructor(e.target.value)} required /></div>
