@@ -7,7 +7,8 @@ import { supabase } from '@/lib/supabase'
 function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const redirect = searchParams.get('redirect') || '/profile'
+  const rawRedirect = searchParams.get('redirect') || '/profile'
+  const redirect = rawRedirect.startsWith('/') ? rawRedirect : '/profile'
 
   const [tab, setTab] = useState<'signin' | 'register'>('signin')
   const [email, setEmail] = useState('')
@@ -83,7 +84,7 @@ function LoginForm() {
           {(['signin', 'register'] as const).map(t => (
             <button
               key={t}
-              onClick={() => { setTab(t); setError('') }}
+              onClick={() => { setTab(t); setError(''); setResetSent(false) }}
               className="pb-3 label-overline transition-all duration-300"
               style={{
                 borderBottom: tab === t ? '1px solid var(--serve-green)' : '1px solid transparent',
