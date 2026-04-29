@@ -27,7 +27,7 @@ interface SessionCardProps {
 export default function SessionCard({ session, bookingCount, userStatus, onBook }: SessionCardProps) {
   const isFull = bookingCount >= session.capacity
   const isBooked = userStatus === 'confirmed'
-  const spotsLeft = session.capacity - bookingCount
+  const spotsLeft = Math.max(0, session.capacity - bookingCount)
 
   let label = 'Book'
   let disabled = false
