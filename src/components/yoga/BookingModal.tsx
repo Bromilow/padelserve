@@ -27,7 +27,7 @@ interface BookingModalProps {
 export default function BookingModal({ session, userId, bookingCount, onClose, onSuccess }: BookingModalProps) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const spotsLeft = session.capacity - bookingCount
+  const spotsLeft = Math.max(0, session.capacity - bookingCount)
 
   async function handleConfirm() {
     setLoading(true)
