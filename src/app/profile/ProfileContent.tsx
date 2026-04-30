@@ -5,12 +5,13 @@ import { useRouter } from 'next/navigation'
 import { useAuth } from '@/hooks/useAuth'
 import MyBookings from '@/components/profile/MyBookings'
 import ProfileForm from '@/components/profile/ProfileForm'
+import AdminPanel from '@/components/profile/AdminPanel'
 
-type Tab = 'bookings' | 'profile'
+type Tab = 'bookings' | 'profile' | 'admin'
 
 export default function ProfileContent() {
   const router = useRouter()
-  const { user, profile, loading } = useAuth()
+  const { user, profile, loading, isAdmin } = useAuth()
   const [activeTab, setActiveTab] = useState<Tab>('bookings')
 
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function ProfileContent() {
   const tabs: { id: Tab; label: string }[] = [
     { id: 'bookings', label: 'My Bookings' },
     { id: 'profile', label: 'Profile' },
+    ...(isAdmin ? [{ id: 'admin' as Tab, label: 'Admin ✦' }] : []),
   ]
 
   return (
@@ -56,6 +58,7 @@ export default function ProfileContent() {
         <div className="mt-10">
           {activeTab === 'bookings' && <MyBookings userId={user!.id} />}
           {activeTab === 'profile' && <ProfileForm profile={profile} />}
+          {activeTab === 'admin' && isAdmin && <AdminPanel />}
         </div>
       </div>
     </div>
