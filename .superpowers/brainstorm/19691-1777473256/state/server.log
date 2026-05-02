@@ -1,0 +1,9 @@
+{"type":"server-started","port":59976,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:59976","screen_dir":"/Users/richardbromilow/Desktop/dev/servepadel-web/.superpowers/brainstorm/19691-1777473256/content","state_dir":"/Users/richardbromilow/Desktop/dev/servepadel-web/.superpowers/brainstorm/19691-1777473256/state"}
+{"type":"screen-added","file":"/Users/richardbromilow/Desktop/dev/servepadel-web/.superpowers/brainstorm/19691-1777473256/content/welcome.html"}
+{"type":"screen-added","file":"/Users/richardbromilow/Desktop/dev/servepadel-web/.superpowers/brainstorm/19691-1777473256/content/approaches.html"}
+{"source":"user-event","type":"click","text":"A\n    \n      Static Export + Supabase Client-Side ★ Recommended\n      Keep output: \"export\" and the existing Netlify deployment exactly as-is. Add Supabase's JS SDK — your app talks directly to Supabase from the browser. Supabase's Row Level Security (RLS) policies enforce who can read/write what. No deployment changes, no new infrastructure.\n      \n        ProsZero deployment changesProven pattern for booking appsSupabase auth built-in (email + password)RLS is genuinely secureFastest to ship\n        ConsAll logic lives in the browserComplex RLS policies to write","choice":"a","id":null,"timestamp":1777473788514}
+{"type":"screen-added","file":"/Users/richardbromilow/Desktop/dev/servepadel-web/.superpowers/brainstorm/19691-1777473256/content/page-structure.html"}
+{"type":"screen-added","file":"/Users/richardbromilow/Desktop/dev/servepadel-web/.superpowers/brainstorm/19691-1777473256/content/flows.html"}
+{"type":"screen-added","file":"/Users/richardbromilow/Desktop/dev/servepadel-web/.superpowers/brainstorm/19691-1777473256/content/admin-panel.html"}
+{"type":"screen-added","file":"/Users/richardbromilow/Desktop/dev/servepadel-web/.superpowers/brainstorm/19691-1777473256/content/waiting-1.html"}
+{"type":"server-stopped","reason":"idle timeout"}

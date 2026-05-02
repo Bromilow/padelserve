@@ -73,14 +73,24 @@ export default function ContactContent() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setSubmitting(true)
-    // Simulate async submission with a brief delay for UX feel
-    setTimeout(() => {
-      setSubmitting(false)
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          ...form,
+        }).toString(),
+      })
       setSubmitted(true)
-    }, 900)
+    } catch {
+      alert('Something went wrong. Please try again or call us directly.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -175,7 +185,8 @@ export default function ContactContent() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate>
+                <form onSubmit={handleSubmit} noValidate name="contact" data-netlify="true">
+                  <input type="hidden" name="form-name" value="contact" />
                   <h2
                     className="text-display-sm mb-10"
                     style={{

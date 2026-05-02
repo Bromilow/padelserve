@@ -1,0 +1,58 @@
+<h2>User Flows</h2>
+<p class="subtitle">Auth, booking, and cancellation</p>
+
+<div class="section">
+  <span class="label">Sign In / Register</span>
+  <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap;font-size:0.8rem;">
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">Visit /yoga or click "My Account"</div>
+    <span>→</span>
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">/login page (email + password)</div>
+    <span>→</span>
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">First time? Enter name + phone too</div>
+    <span>→</span>
+    <div style="background:#d1fae5;border-radius:6px;padding:0.5rem 0.75rem;font-weight:600;">Redirected back to previous page</div>
+  </div>
+  <p style="font-size:0.75rem;opacity:0.6;margin-top:0.5rem;">Single page handles both login and register — toggled by a tab. Supabase sends a confirmation email on register.</p>
+</div>
+
+<div class="section">
+  <span class="label">Booking a Session</span>
+  <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap;font-size:0.8rem;">
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">Click "Book" on /yoga</div>
+    <span>→</span>
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">Not logged in? → /login then back</div>
+    <span>→</span>
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">Confirm modal: session details</div>
+    <span>→</span>
+    <div style="background:#d1fae5;border-radius:6px;padding:0.5rem 0.75rem;font-weight:600;">Booked! Button → "You're in"</div>
+  </div>
+  <p style="font-size:0.75rem;opacity:0.6;margin-top:0.5rem;">If session is full, button shows "Full" and is disabled. If user already booked, button shows "You're in".</p>
+</div>
+
+<div class="section">
+  <span class="label">Cancelling a Booking</span>
+  <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap;font-size:0.8rem;">
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">Go to /profile → My Bookings</div>
+    <span>→</span>
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">Click "Cancel" on upcoming booking</div>
+    <span>→</span>
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">Confirm cancel modal</div>
+    <span>→</span>
+    <div style="background:#fef3c7;border-radius:6px;padding:0.5rem 0.75rem;font-weight:600;">Spot freed, booking removed</div>
+  </div>
+  <p style="font-size:0.75rem;opacity:0.6;margin-top:0.5rem;">Cancelling sets booking status to 'cancelled' (not deleted) so the admin can see historical data. The freed spot becomes available immediately.</p>
+</div>
+
+<div class="section">
+  <span class="label">Admin: Creating a Session</span>
+  <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap;font-size:0.8rem;">
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">/profile → Admin → Sessions</div>
+    <span>→</span>
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">"+ Add Session" or "+ Add Recurring"</div>
+    <span>→</span>
+    <div style="background:#f0f0f0;border-radius:6px;padding:0.5rem 0.75rem;">Fill form (title, date/recurrence, time, duration, capacity, instructor)</div>
+    <span>→</span>
+    <div style="background:#d1fae5;border-radius:6px;padding:0.5rem 0.75rem;font-weight:600;">Session(s) appear on /yoga</div>
+  </div>
+  <p style="font-size:0.75rem;opacity:0.6;margin-top:0.5rem;">Recurring sessions generate instances 8 weeks ahead. Admin can edit any individual instance without affecting the recurring template.</p>
+</div>

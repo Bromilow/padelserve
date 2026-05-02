@@ -1,0 +1,42 @@
+<h2>Architecture Approaches</h2>
+<p class="subtitle">How to add a backend to your static Next.js site</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Static Export + Supabase Client-Side <span style="color:#4ade80;font-size:0.75rem;margin-left:0.5rem;">★ Recommended</span></h3>
+      <p>Keep <code>output: "export"</code> and the existing Netlify deployment exactly as-is. Add Supabase's JS SDK — your app talks directly to Supabase from the browser. Supabase's Row Level Security (RLS) policies enforce who can read/write what. No deployment changes, no new infrastructure.</p>
+      <div class="pros-cons" style="margin-top:0.75rem;">
+        <div class="pros"><h4>Pros</h4><ul><li>Zero deployment changes</li><li>Proven pattern for booking apps</li><li>Supabase auth built-in (email + password)</li><li>RLS is genuinely secure</li><li>Fastest to ship</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>All logic lives in the browser</li><li>Complex RLS policies to write</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Switch to SSR on Netlify + Supabase Server-Side</h3>
+      <p>Remove <code>output: "export"</code> and enable Next.js server-side rendering. Add API routes that handle all mutations (book, cancel, manage sessions) with server-side Supabase. The existing marketing pages still work — they just render server-side instead of statically.</p>
+      <div class="pros-cons" style="margin-top:0.75rem;">
+        <div class="pros"><h4>Pros</h4><ul><li>Best security model</li><li>Server-side validation</li><li>More flexible long-term</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Requires deployment changes</li><li>Risk of breaking existing pages</li><li>More complex setup</li><li>Slower to ship</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Static Export + Netlify Functions</h3>
+      <p>Keep static export, but add Netlify serverless functions as a lightweight API layer. Functions call Supabase server-side and expose endpoints your app calls. A hybrid between A and B.</p>
+      <div class="pros-cons" style="margin-top:0.75rem;">
+        <div class="pros"><h4>Pros</h4><ul><li>Keeps static export</li><li>Some server-side logic</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Most complex to set up</li><li>Two separate code paths to maintain</li><li>Functions are slower cold-start than Supabase direct</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p style="margin-top:1.5rem;font-size:0.875rem;opacity:0.7;">Click to select your preferred approach, or let me know in the terminal.</p>
