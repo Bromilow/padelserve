@@ -13,7 +13,7 @@ const BOOKING_URL =
   'https://app.playtomic.com/tenant/c9825c68-9da4-4cc4-a065-06ea58087f85?utm_source=app_ios&utm_campaign=share&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGngd9wn58fSDwPnOr_qB-ckJuekphFMIAt1taj2AnenpRp9ew3MykolGyULcw_aem_s3FqvC8jKTCbMpbwv-VupA'
 
 const navLinks = [
-  { label: 'Play', href: '/#play' },
+  { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Events', href: '/events' },
   { label: 'Yoga', href: '/yoga' },
@@ -101,8 +101,8 @@ export default function Navigation() {
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          backgroundColor: 'var(--serve-cream)',
-          borderBottom: '1px solid rgba(28,58,42,0.12)',
+          backgroundColor: 'var(--serve-green)',
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
         }}
       >
         <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
@@ -110,7 +110,7 @@ export default function Navigation() {
             {/* Logo */}
             <Link href="/" onClick={closeMenu}>
               <Image
-                src={asset('/assets/webp/serve.webp')}
+                src={asset('/assets/new-logo.png')}
                 alt="SERVE Padel & Play"
                 width={160}
                 height={80}
@@ -125,7 +125,7 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="nav-link text-[var(--serve-dark)] opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  className="nav-link text-[var(--serve-cream)] opacity-80 hover:opacity-100 transition-opacity duration-300"
                   onClick={(e) => handleNavClick(e, link.href)}
                 >
                   {link.label}
@@ -139,7 +139,7 @@ export default function Navigation() {
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-luxury btn-luxury-dark"
+                className="btn-luxury btn-luxury-light"
               >
                 <span>Book a Court</span>
               </a>
@@ -147,11 +147,11 @@ export default function Navigation() {
 
             {/* Desktop Auth */}
             {!authLoading && (
-              <div className="hidden md:flex items-center ml-4 pl-4" style={{ borderLeft: '1px solid rgba(28,58,42,0.15)' }}>
+              <div className="hidden md:flex items-center ml-4 pl-4" style={{ borderLeft: '1px solid rgba(255,255,255,0.15)' }}>
                 {!user ? (
                   <Link
                     href="/login"
-                    className="nav-link text-[var(--serve-dark)] opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    className="nav-link text-[var(--serve-cream)] opacity-70 hover:opacity-100 transition-opacity duration-300"
                   >
                     Sign In
                   </Link>
@@ -159,7 +159,7 @@ export default function Navigation() {
                   <div ref={accountMenuRef} style={{ position: 'relative' }}>
                     <button
                       onClick={() => setAccountMenuOpen(prev => !prev)}
-                      className="nav-link text-[var(--serve-dark)] opacity-70 hover:opacity-100 transition-opacity duration-300"
+                      className="nav-link text-[var(--serve-cream)] opacity-70 hover:opacity-100 transition-opacity duration-300"
                     >
                       My Account
                     </button>
@@ -176,13 +176,13 @@ export default function Navigation() {
                         <Link
                           href="/profile"
                           onClick={() => setAccountMenuOpen(false)}
-                          className="nav-link block px-4 py-3 text-[var(--serve-dark)] opacity-70 hover:opacity-100"
+                          className="nav-link block px-4 py-3 text-[var(--serve-cream)] opacity-70 hover:opacity-100"
                         >
                           Profile
                         </Link>
                         <button
                           onClick={handleSignOut}
-                          className="nav-link w-full text-left px-4 py-3 text-[var(--serve-dark)] opacity-70 hover:opacity-100"
+                          className="nav-link w-full text-left px-4 py-3 text-[var(--serve-cream)] opacity-70 hover:opacity-100"
                         >
                           Sign Out
                         </button>
@@ -201,14 +201,14 @@ export default function Navigation() {
               aria-expanded={menuOpen}
             >
               <span
-                className="block w-6 h-px bg-black transition-all duration-400"
+                className="block w-6 h-px bg-white transition-all duration-400"
                 style={{
                   transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'none',
                   transition: 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 }}
               />
               <span
-                className="block w-6 h-px bg-black transition-all duration-400"
+                className="block w-6 h-px bg-white transition-all duration-400"
                 style={{
                   opacity: menuOpen ? 0 : 1,
                   transform: menuOpen ? 'translateX(-8px)' : 'none',
@@ -217,7 +217,7 @@ export default function Navigation() {
                 }}
               />
               <span
-                className="block w-6 h-px bg-black"
+                className="block w-6 h-px bg-white"
                 style={{
                   transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none',
                   transition: 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',

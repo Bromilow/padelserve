@@ -236,7 +236,8 @@ export default function HomePage() {
       {/* ─── SECTION 3: PLAY ─── */}
       <section
         id="play"
-        className="bg-[var(--serve-green)] section-padding-sm overflow-hidden relative"
+        className="section-padding-sm overflow-hidden relative"
+        style={{ backgroundColor: '#3a3a3a' }}
       >
         <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
           {/* Header */}

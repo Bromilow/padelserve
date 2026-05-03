@@ -83,7 +83,7 @@ export default function StatsTab() {
         ))}
       </div>
 
-      <p className="label-overline mb-4" style={{ color: 'var(--serve-sage)' }}>Upcoming — fill rate</p>
+      <p className="label-overline mb-4" style={{ color: 'var(--serve-sage)' }}>Upcoming fill rate</p>
       {upcoming.length === 0 && <p style={{ fontSize: '0.9rem', opacity: 0.5 }}>No upcoming sessions.</p>}
       <div style={{ border: '1px solid rgba(28,58,42,0.15)', backgroundColor: 'white' }}>
         {upcoming.map((session, i) => {

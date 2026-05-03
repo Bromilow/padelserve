@@ -52,7 +52,7 @@ export default function BookingModal({ session, userId, bookingCount, onClose, o
         .from('bookings')
         .insert({ user_id: userId, session_id: session.id, status: 'confirmed' })
       if (error) {
-        setError(error.code === '23505' ? 'Session is now full — please try another.' : 'Unable to complete booking. Please try again.')
+        setError(error.code === '23505' ? 'Session is now full. Please try another.' : 'Unable to complete booking. Please try again.')
         setLoading(false)
         return
       }
