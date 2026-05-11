@@ -297,6 +297,60 @@ body {
   border-color: var(--serve-green);
 }
 
+/* ─── Custom Checkbox & Radio ─── */
+.serve-checkbox,
+.serve-radio {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(28, 58, 42, 0.35);
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  margin: 0;
+}
+.serve-radio {
+  border-radius: 50%;
+}
+.serve-checkbox:checked {
+  background: var(--serve-green);
+  border-color: var(--serve-green);
+}
+.serve-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%) rotate(45deg);
+  width: 3px;
+  height: 6px;
+  border-right: 1.5px solid var(--serve-cream);
+  border-bottom: 1.5px solid var(--serve-cream);
+}
+.serve-radio:checked {
+  background: var(--serve-green);
+  border-color: var(--serve-green);
+  box-shadow: inset 0 0 0 3px var(--serve-cream);
+}
+.serve-checkbox:focus,
+.serve-radio:focus {
+  outline: none;
+  border-color: var(--serve-green);
+}
+input[type='date'].form-field,
+input[type='time'].form-field,
+input[type='number'].form-field {
+  color-scheme: light;
+}
+input[type='date'].form-field::-webkit-calendar-picker-indicator,
+input[type='time'].form-field::-webkit-calendar-picker-indicator {
+  opacity: 0.35;
+  cursor: pointer;
+}
+
 /* ─── Video overlay ─── */
 .video-overlay {
   background:
