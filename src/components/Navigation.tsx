@@ -168,8 +168,8 @@ export default function Navigation() {
                         position: 'absolute',
                         top: 'calc(100% + 1rem)',
                         right: 0,
-                        backgroundColor: 'var(--serve-cream)',
-                        border: '1px solid rgba(28,58,42,0.15)',
+                        backgroundColor: 'var(--serve-green)',
+                        border: '1px solid rgba(255,255,255,0.08)',
                         minWidth: '140px',
                         zIndex: 100,
                       }}>
