@@ -73,7 +73,8 @@ export default function UsersTab() {
   async function toggleRole(userId: string, currentRole: string) {
     const newRole = currentRole === 'admin' ? 'user' : 'admin'
     if (!confirm(`${newRole === 'admin' ? 'Promote to admin' : 'Remove admin role for'} this user?`)) return
-    await supabase.from('profiles').update({ role: newRole }).eq('id', userId)
+    const { error } = await supabase.rpc('set_user_role', { target_user_id: userId, new_role: newRole })
+    if (error) { alert(`Failed: ${error.message}`); return }
     fetchUsers()
   }
 
