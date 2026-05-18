@@ -60,16 +60,21 @@ function useParallax() {
 
 const galleryImages = [
   { src: '/assets/dining-terrace.webp', alt: 'Dining terrace at SERVE' },
+  { src: '/assets/srv-lifestyle.jpg', alt: 'Talia and Lauren at the SRV padel court' },
   { src: '/assets/srv-logo-mural.webp', alt: 'SRV botanical logo mural' },
   { src: '/assets/pizza-artisan.webp', alt: 'Artisan wood-fired pizza' },
+  { src: '/assets/talia-lauren-rooftop.jpg', alt: 'Talia and Lauren on the SERVE rooftop terrace' },
   { src: '/assets/kids-play-night.webp', alt: 'Kids playing at night under string lights' },
   { src: '/assets/serve-sign-hedge.webp', alt: 'SERVE padel sign on green hedge' },
+  { src: '/assets/srv-drinks.jpg', alt: 'SRV branded drinks on the padel court' },
   { src: '/assets/court-night-lights.webp', alt: 'Padel court at night with SRV sign' },
-  { src: '/assets/3.png', alt: 'Guests enjoying drinks on the SERVE terrace at sunset' },
-  { src: '/assets/4.png', alt: 'Aerial view of SERVE padel courts and facility' },
-  { src: '/assets/5.jpg', alt: 'Players mid-rally on a floodlit padel court' },
-  { src: '/assets/7.jpg', alt: 'Friends celebrating after a padel match at SERVE' },
-  { src: '/assets/8.jpg', alt: 'Wood-fired pizza oven and kitchen at SERVE' },
+  { src: '/assets/3.png', alt: 'SRV latte art coffee' },
+  { src: '/assets/rooftop-duo.jpg', alt: 'Talia and Lauren celebrating on the SERVE rooftop' },
+  { src: '/assets/4.png', alt: 'SRV branded flat white being poured' },
+  { src: '/assets/5.jpg', alt: 'SRV building exterior' },
+  { src: '/assets/court-highfive.jpg', alt: 'High five on the SRV padel court' },
+  { src: '/assets/7.jpg', alt: 'SERVE padel & play sign' },
+  { src: '/assets/8.jpg', alt: 'SERVE venue from courtside' },
 ]
 
 export default function HomePage() {
@@ -150,7 +155,7 @@ export default function HomePage() {
           </p>
 
           {/* CTA */}
-          <div className="hero-word flex flex-col items-center" style={{ animationDelay: '1.3s', opacity: 0 }}>
+          <div className="hero-word flex flex-col sm:flex-row items-center gap-4" style={{ animationDelay: '1.3s', opacity: 0 }}>
             <a
               href={PLAYTOMIC_URL}
               target="_blank"
@@ -159,6 +164,9 @@ export default function HomePage() {
             >
               <span>Book a Court</span>
             </a>
+            <Link href="/events" className="btn-luxury btn-luxury-light">
+              <span>Book an Event</span>
+            </Link>
           </div>
         </div>
 
@@ -191,8 +199,8 @@ export default function HomePage() {
               className="parallax-container w-full lg:w-[60%] h-[55vw] lg:h-[42vw] max-h-[520px] min-h-[260px] reveal-left"
             >
               <Image
-                src={asset('/assets/home.png')}
-                alt="Padel court at night with illuminated SERVE sign and string lights"
+                src={asset('/assets/social-watching.jpg')}
+                alt="Guests watching padel and socialising at SERVE"
                 fill
                 className="parallax-img object-cover"
                 sizes="(max-width: 1024px) 100vw, 60vw"
@@ -536,6 +544,121 @@ export default function HomePage() {
                 className="object-cover"
                 sizes="(max-width: 640px) 100vw, 50vw"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SECTION: SRV BALANCE ─── */}
+      <section className="bg-[var(--serve-dark)] section-padding-sm overflow-hidden">
+        <div className="max-w-screen-xl mx-auto px-6 lg:px-12">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <p className="label-overline text-[var(--serve-cream)] opacity-50 mb-5 fade-up">
+              Mind &amp; Body
+            </p>
+            <h2
+              className="text-display-lg text-[var(--serve-cream)] font-light fade-up delay-100"
+              style={{ fontFamily: 'var(--font-cormorant)' }}
+            >
+              SRV{' '}
+              <span style={{ fontStyle: 'italic', color: 'var(--serve-amber)' }}>Balance</span>
+            </h2>
+            <p
+              className="mt-6 text-sm text-[var(--serve-cream)] opacity-60 max-w-xl mx-auto leading-relaxed fade-up delay-200"
+              style={{ fontFamily: 'var(--font-jost)' }}
+            >
+              Pilates and yoga on our open-air rooftop. Expert instructors. Small groups. A practice to match your pace.
+            </p>
+          </div>
+
+          {/* Instructor cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-14">
+            {/* Talia — Pilates */}
+            <div className="reveal-left flex flex-col" style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <div className="relative aspect-[4/3] overflow-hidden img-hover-zoom">
+                <Image
+                  src={asset('/assets/talia-pilates.jpg')}
+                  alt="Talia Tostee — Pilates instructor at SERVE"
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: 'center 40%' }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <p className="label-overline mb-2" style={{ color: 'var(--serve-amber)' }}>Pilates</p>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-cormorant)',
+                    fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
+                    fontWeight: 300,
+                    color: 'var(--serve-cream)',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  Talia Tostee
+                </h3>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-jost)',
+                    fontSize: '0.875rem',
+                    color: 'var(--serve-cream)',
+                    opacity: 0.65,
+                    lineHeight: 1.85,
+                    marginBottom: '1.5rem',
+                    flex: 1,
+                  }}
+                >
+                  Growing up, dance was everything — but discovering Pilates at just 13 changed the course of my life. As a qualified BASI Pilates instructor, I bring personal experience managing scoliosis and a genuine passion to every session. My goal: to help others feel stronger, more connected, and truly empowered in their own bodies.
+                </p>
+                <Link href="/yoga" className="btn-luxury btn-luxury-light" style={{ alignSelf: 'flex-start' }}>
+                  <span>Book Pilates</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Lauren — Yoga */}
+            <div className="reveal-right flex flex-col" style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <div className="relative aspect-[4/3] overflow-hidden img-hover-zoom">
+                <Image
+                  src={asset('/assets/lauren-court.jpg')}
+                  alt="Lauren Dreyer — Yoga instructor at SERVE"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <p className="label-overline mb-2" style={{ color: 'var(--serve-amber)' }}>Yoga</p>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-cormorant)',
+                    fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
+                    fontWeight: 300,
+                    color: 'var(--serve-cream)',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  Lauren Dreyer
+                </h3>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-jost)',
+                    fontSize: '0.875rem',
+                    color: 'var(--serve-cream)',
+                    opacity: 0.65,
+                    lineHeight: 1.85,
+                    marginBottom: '1.5rem',
+                    flex: 1,
+                  }}
+                >
+                  YTT200 certified at Gurucat (2024), with nearly two years of teaching experience. Yoga is not just a work-out, but a work-in. My classes bridge inner awareness and physical presence through breathwork, meditation, and asanas — designed to challenge both body and mind.
+                </p>
+                <Link href="/yoga" className="btn-luxury btn-luxury-light" style={{ alignSelf: 'flex-start' }}>
+                  <span>Book Yoga</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

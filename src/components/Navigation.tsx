@@ -16,7 +16,7 @@ const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Events', href: '/events' },
-  { label: 'Yoga', href: '/yoga' },
+  { label: 'Yoga & Pilates', href: '/yoga' },
   { label: 'Eat & Drink', href: '/menu' },
   { label: 'Contact', href: '/contact' },
 ]

@@ -1,101 +1,15 @@
 'use client'
 
-import { useEffect, useRef, useState, FormEvent } from 'react'
 import Image from 'next/image'
 import { asset } from '@/lib/assetPath'
 
 const BOOKING_URL =
   'https://app.playtomic.com/tenant/c9825c68-9da4-4cc4-a065-06ea58087f85?utm_source=app_ios&utm_campaign=share&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGngd9wn58fSDwPnOr_qB-ckJuekphFMIAt1taj2AnenpRp9ew3MykolGyULcw_aem_s3FqvC8jKTCbMpbwv-VupA'
 
-function useScrollReveal() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const container = sectionRef.current
-    if (!container) return
-
-    const animatableEls = container.querySelectorAll<HTMLElement>(
-      '.fade-up, .fade-in, .reveal-left, .reveal-right, .scale-reveal'
-    )
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view')
-            observer.unobserve(entry.target)
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    animatableEls.forEach((el) => observer.observe(el))
-
-    return () => observer.disconnect()
-  }, [])
-
-  return sectionRef
-}
-
-interface FormState {
-  name: string
-  email: string
-  phone: string
-  enquiryType: string
-  message: string
-}
-
-const enquiryTypes = [
-  'General Enquiry',
-  'Book a Court',
-  'Private Events',
-  'Corporate Enquiry',
-  'Other',
-]
-
 export default function ContactContent() {
-  const pageRef = useScrollReveal()
-
-  const [form, setForm] = useState<FormState>({
-    name: '',
-    email: '',
-    phone: '',
-    enquiryType: '',
-    message: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setSubmitting(true)
-    try {
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({
-          'form-name': 'contact',
-          ...form,
-        }).toString(),
-      })
-      setSubmitted(true)
-    } catch {
-      alert('Something went wrong. Please try again or call us directly.')
-    } finally {
-      setSubmitting(false)
-    }
-  }
-
   return (
-    <div ref={pageRef}>
-      {/* ─── 1. PAGE HEADER ─── */}
+    <div>
+      {/* ─── PAGE HEADER ─── */}
       <section
         className="relative flex items-center justify-center overflow-hidden"
         style={{ height: 'calc(80vh + 80px)', minHeight: '640px', paddingTop: '80px' }}
@@ -110,369 +24,69 @@ export default function ContactContent() {
         />
         <div className="video-overlay absolute inset-0" />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <p className="label-overline text-[var(--serve-cream)] opacity-70 mb-6 fade-up in-view">
+          <p className="label-overline text-[var(--serve-cream)] opacity-70 mb-6">
             Get in touch
           </p>
           <h1
-            className="text-display-lg text-[var(--serve-cream)] font-light mb-6 fade-up in-view delay-200"
+            className="text-display-lg text-[var(--serve-cream)] font-light mb-6"
             style={{ fontFamily: 'var(--font-cormorant), serif' }}
           >
             We&apos;d love to{' '}
             <span style={{ fontStyle: 'italic', color: 'var(--serve-amber)' }}>hear from you.</span>
           </h1>
-          <p
-            className="text-[var(--serve-cream)] fade-up in-view delay-400"
-            style={{
-              fontFamily: 'var(--font-jost), sans-serif',
-              fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-              opacity: 0.8,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              fontWeight: 300,
-            }}
-          >
-            Say hello.
-          </p>
         </div>
       </section>
 
-      {/* ─── 2. CONTACT SPLIT ─── */}
+      {/* ─── CONTACT DETAILS ─── */}
       <section className="section-padding-sm px-6" style={{ backgroundColor: 'var(--serve-cream)' }}>
         <div className="max-w-screen-xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-16 xl:gap-24 items-start">
-
-            {/* LEFT: Form */}
-            <div className="reveal-left">
-              {submitted ? (
-                /* Success state */
-                <div
-                  className="flex flex-col items-start justify-center py-16"
-                  style={{ minHeight: '480px' }}
-                >
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-cormorant), serif',
-                      fontStyle: 'italic',
-                      fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-                      color: 'var(--serve-sage)',
-                      marginBottom: '1rem',
-                    }}
-                  >
-                    Thank you
-                  </p>
-                  <h2
-                    className="text-display-sm mb-4"
-                    style={{
-                      fontFamily: 'var(--font-cormorant), serif',
-                      fontWeight: 300,
-                      color: 'var(--serve-green)',
-                    }}
-                  >
-                    Message received.
-                  </h2>
-                  <hr className="hr-elegant w-16 mb-6" style={{ color: 'var(--serve-green)' }} />
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-jost), sans-serif',
-                      fontSize: '1rem',
-                      lineHeight: 1.85,
-                      color: 'var(--serve-charcoal)',
-                      fontWeight: 300,
-                      maxWidth: '28rem',
-                    }}
-                  >
-                    We&apos;ll be in touch shortly. Thank you.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} noValidate name="contact" data-netlify="true">
-                  <input type="hidden" name="form-name" value="contact" />
-                  <h2
-                    className="text-display-sm mb-10"
-                    style={{
-                      fontFamily: 'var(--font-cormorant), serif',
-                      fontWeight: 300,
-                      color: 'var(--serve-green)',
-                    }}
-                  >
-                    Send us a message
-                  </h2>
-
-                  <div className="space-y-8">
-                    {/* Full Name */}
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="label-overline block mb-2"
-                        style={{ color: 'var(--serve-green)', opacity: 0.65 }}
-                      >
-                        Full Name
-                      </label>
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        placeholder="Jane Smith"
-                        value={form.name}
-                        onChange={handleChange}
-                        className="form-field"
-                      />
-                    </div>
-
-                    {/* Email */}
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="label-overline block mb-2"
-                        style={{ color: 'var(--serve-green)', opacity: 0.65 }}
-                      >
-                        Email Address
-                      </label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        placeholder="jane@example.com"
-                        value={form.email}
-                        onChange={handleChange}
-                        className="form-field"
-                      />
-                    </div>
-
-                    {/* Phone */}
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="label-overline block mb-2"
-                        style={{ color: 'var(--serve-green)', opacity: 0.65 }}
-                      >
-                        Phone Number
-                      </label>
-                      <input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        placeholder="+27 60 000 0000"
-                        value={form.phone}
-                        onChange={handleChange}
-                        className="form-field"
-                      />
-                    </div>
-
-                    {/* Enquiry Type */}
-                    <div>
-                      <label
-                        htmlFor="enquiryType"
-                        className="label-overline block mb-2"
-                        style={{ color: 'var(--serve-green)', opacity: 0.65 }}
-                      >
-                        Enquiry Type
-                      </label>
-                      <select
-                        id="enquiryType"
-                        name="enquiryType"
-                        required
-                        value={form.enquiryType}
-                        onChange={handleChange}
-                        className="form-field"
-                        style={{
-                          cursor: 'pointer',
-                          color: form.enquiryType ? 'var(--serve-dark)' : 'rgba(28, 58, 42, 0.35)',
-                          appearance: 'none',
-                          WebkitAppearance: 'none',
-                          backgroundImage:
-                            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231C3A2A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\")",
-                          backgroundRepeat: 'no-repeat',
-                          backgroundPosition: 'right 4px center',
-                          paddingRight: '2rem',
-                        }}
-                      >
-                        <option value="" disabled>
-                          Select an option
-                        </option>
-                        {enquiryTypes.map((type) => (
-                          <option key={type} value={type}>
-                            {type}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {/* Message */}
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="label-overline block mb-2"
-                        style={{ color: 'var(--serve-green)', opacity: 0.65 }}
-                      >
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={5}
-                        required
-                        placeholder="Tell us a bit more about what you're looking for..."
-                        value={form.message}
-                        onChange={handleChange}
-                        className="form-field resize-none"
-                        style={{ paddingTop: '0.875rem' }}
-                      />
-                    </div>
-
-                    {/* Submit */}
-                    <div className="pt-4">
-                      <button
-                        type="submit"
-                        disabled={submitting}
-                        className="btn-luxury btn-luxury-green"
-                        style={{ opacity: submitting ? 0.65 : 1 }}
-                      >
-                        <span>{submitting ? 'Sending...' : 'Send Enquiry'}</span>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              )}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
+            {/* Visit Us */}
+            <div className="p-10" style={{ backgroundColor: 'var(--serve-green)' }}>
+              <p className="label-overline mb-4" style={{ color: 'var(--serve-sage)' }}>Visit Us</p>
+              <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: '1.2rem', fontWeight: 300, color: 'var(--serve-cream)', lineHeight: 1.7 }}>
+                2nd Floor, 185 Ridge Rd<br />Umhlanga, KwaZulu-Natal
+              </p>
             </div>
 
-            {/* RIGHT: Contact info + map */}
-            <div className="reveal-right">
-              {/* Info card */}
-              <div
-                className="mb-8 overflow-hidden"
-                style={{ backgroundColor: 'var(--serve-green)' }}
+            {/* Call Us */}
+            <div className="p-10" style={{ backgroundColor: 'var(--serve-dark)' }}>
+              <p className="label-overline mb-4" style={{ color: 'var(--serve-sage)' }}>Call Us</p>
+              <a
+                href="tel:+27615451063"
+                style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: '1.2rem', fontWeight: 300, color: 'var(--serve-cream)', textDecoration: 'none', lineHeight: 1.7, display: 'block' }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.7')}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
               >
-                {/* Details */}
-                <div className="p-8 space-y-7">
-                  {/* Visit Us */}
-                  <div>
-                    <p
-                      className="label-overline mb-2"
-                      style={{ color: 'var(--serve-sage)' }}
-                    >
-                      Visit Us
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-cormorant), serif',
-                        fontSize: '1.15rem',
-                        fontWeight: 300,
-                        color: 'var(--serve-cream)',
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      2nd Floor, 185 Ridge Rd
-                      <br />
-                      Umhlanga, KwaZulu-Natal
-                    </p>
-                  </div>
+                061 545 1063
+              </a>
+            </div>
 
-                  <hr className="hr-elegant" style={{ color: 'var(--serve-cream)' }} />
+            {/* Hours */}
+            <div className="p-10" style={{ backgroundColor: 'var(--serve-green)' }}>
+              <p className="label-overline mb-4" style={{ color: 'var(--serve-sage)' }}>Hours</p>
+              <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: '1.2rem', fontWeight: 300, color: 'var(--serve-cream)', lineHeight: 1.7 }}>
+                Monday &ndash; Sunday<br />6:00am &ndash; 10:00pm
+              </p>
+            </div>
 
-                  {/* Call Us */}
-                  <div>
-                    <p
-                      className="label-overline mb-2"
-                      style={{ color: 'var(--serve-sage)' }}
-                    >
-                      Call Us
-                    </p>
-                    <a
-                      href="tel:+27615451063"
-                      style={{
-                        fontFamily: 'var(--font-cormorant), serif',
-                        fontSize: '1.15rem',
-                        fontWeight: 300,
-                        color: 'var(--serve-cream)',
-                        textDecoration: 'none',
-                        transition: 'opacity 0.3s ease',
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.75')}
-                      onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
-                    >
-                      061 545 1063
-                    </a>
-                  </div>
-
-                  <hr className="hr-elegant" style={{ color: 'var(--serve-cream)' }} />
-
-                  {/* Hours */}
-                  <div>
-                    <p
-                      className="label-overline mb-2"
-                      style={{ color: 'var(--serve-sage)' }}
-                    >
-                      Hours
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-cormorant), serif',
-                        fontSize: '1.15rem',
-                        fontWeight: 300,
-                        color: 'var(--serve-cream)',
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      Monday &ndash; Sunday
-                      <br />
-                      6:00am &ndash; 10:00pm
-                    </p>
-                  </div>
-
-                  <hr className="hr-elegant" style={{ color: 'var(--serve-cream)' }} />
-
-                  {/* Book Online */}
-                  <div>
-                    <p
-                      className="label-overline mb-2"
-                      style={{ color: 'var(--serve-sage)' }}
-                    >
-                      Book Online
-                    </p>
-                    <a
-                      href={BOOKING_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        fontFamily: 'var(--font-jost), sans-serif',
-                        fontSize: '0.85rem',
-                        fontWeight: 300,
-                        color: 'var(--serve-cream)',
-                        textDecoration: 'none',
-                        letterSpacing: '0.04em',
-                        opacity: 0.8,
-                        transition: 'opacity 0.3s ease',
-                        display: 'inline-block',
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
-                      onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.8')}
-                    >
-                      Book via Playtomic &uarr;&#x2197;
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Google Maps embed */}
-              <div className="overflow-hidden" style={{ border: '1px solid rgba(28,58,42,0.12)' }}>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3460.5!2d31.071!3d-29.726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s185+Ridge+Rd%2C+Umhlanga!5e0!3m2!1sen!2sza!4v1234567890"
-                  width="100%"
-                  height="300"
-                  style={{ border: 0, display: 'block' }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="SERVE Padel & Play location, 185 Ridge Rd, Umhlanga"
-                />
-              </div>
+            {/* Book Online */}
+            <div className="p-10" style={{ backgroundColor: 'var(--serve-dark)' }}>
+              <p className="label-overline mb-4" style={{ color: 'var(--serve-sage)' }}>Book Online</p>
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: '1.2rem', fontWeight: 300, color: 'var(--serve-cream)', textDecoration: 'none', lineHeight: 1.7, display: 'block' }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.7')}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+              >
+                Book via Playtomic ↗
+              </a>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   )
 }

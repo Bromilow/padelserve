@@ -50,6 +50,7 @@ export default function Footer() {
                 { label: 'Home', href: '/' },
                 { label: 'About', href: '/about' },
                 { label: 'Events', href: '/events' },
+                { label: 'Yoga & Pilates', href: '/yoga' },
                 { label: 'Eat & Drink', href: '/menu' },
                 { label: 'Contact', href: '/contact' },
               ].map((link) => (

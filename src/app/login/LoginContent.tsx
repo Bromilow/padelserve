@@ -129,10 +129,10 @@ function LoginForm() {
       {/* ── Left: image panel (desktop only) ── */}
       <div className="hidden lg:flex lg:w-1/2 relative flex-col justify-end p-14" style={{ minHeight: '100vh' }}>
         <Image
-          src={asset('/assets/portrait.png')}
-          alt="SERVE rooftop yoga"
+          src={asset('/assets/rooftop-yoga.jpg')}
+          alt="Yoga and Pilates at SERVE"
           fill
-          className="object-cover object-top"
+          className="object-cover object-center"
           priority
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%)' }} />
@@ -172,8 +172,8 @@ function LoginForm() {
           </h1>
           <p style={{ fontSize: '0.82rem', lineHeight: 1.7, opacity: 0.5, marginBottom: '2rem' }}>
             {tab === 'signin'
-              ? 'Sign in to view and manage your yoga session bookings.'
-              : 'Create a free account to book yoga sessions and manage your reservations.'}
+              ? 'Sign in to view and manage your yoga and pilates session bookings.'
+              : 'Create a free account to book yoga and pilates sessions and manage your reservations.'}
           </p>
 
           {tab === 'signin' ? (

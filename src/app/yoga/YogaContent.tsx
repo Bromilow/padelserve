@@ -104,8 +104,8 @@ function YogaList() {
       {/* ── HERO ── */}
       <section className="relative flex items-end" style={{ height: 'calc(80vh + 80px)', minHeight: '640px', paddingTop: '80px' }}>
         <Image
-          src={asset('/assets/yoga1.png')}
-          alt="Yoga class on the SERVE rooftop"
+          src={asset('/assets/talia-lauren-rooftop.jpg')}
+          alt="Talia and Lauren on the SERVE rooftop"
           fill
           className="object-cover object-center"
           priority
@@ -116,7 +116,7 @@ function YogaList() {
             className="label-overline mb-6"
             style={{ color: 'var(--serve-cream)', opacity: 0.6, letterSpacing: '0.25em' }}
           >
-            Rooftop · Umhlanga
+            SRV Balance · Rooftop · Umhlanga
           </p>
           <h1
             style={{
@@ -125,14 +125,11 @@ function YogaList() {
               fontWeight: 300,
               lineHeight: 1.0,
               color: 'var(--serve-cream)',
-              maxWidth: '14ch',
+              maxWidth: '16ch',
             }}
           >
-            Breathe.
-            <br />
-            <span style={{ fontStyle: 'italic', color: 'var(--serve-amber)' }}>Move.</span>
-            <br />
-            Reset.
+            Yoga &amp;{' '}
+            <span style={{ fontStyle: 'italic', color: 'var(--serve-amber)' }}>Pilates.</span>
           </h1>
           <p
             style={{
@@ -146,7 +143,7 @@ function YogaList() {
               letterSpacing: '0.04em',
             }}
           >
-            Yoga on our open-air rooftop terrace. Small groups. Expert instruction. A space to come back to yourself.
+            Yoga and Pilates on our open-air rooftop terrace. Expert instruction. Small groups. A space to come back to yourself.
           </p>
           <div style={{ marginTop: '2.5rem' }}>
             <a
@@ -165,16 +162,123 @@ function YogaList() {
         </div>
       </section>
 
+      {/* ── INSTRUCTOR ── */}
+      <section style={{ backgroundColor: 'var(--serve-cream)' }}>
+        <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2">
+          {/* Text */}
+          <div className="flex flex-col justify-center px-10 py-20 lg:px-16 order-2 lg:order-1">
+            <p className="label-overline mb-4" style={{ color: 'var(--serve-green)', letterSpacing: '0.2em' }}>Your Instructor</p>
+            <h2
+              style={{
+                fontFamily: 'var(--font-cormorant)',
+                fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
+                fontWeight: 300,
+                lineHeight: 1.1,
+                color: 'var(--serve-dark)',
+                marginBottom: '0.5rem',
+              }}
+            >
+              Lauren Dreyer
+            </h2>
+            <p
+              style={{
+                fontFamily: 'var(--font-cormorant)',
+                fontSize: '1.1rem',
+                fontStyle: 'italic',
+                color: 'var(--serve-sage)',
+                marginBottom: '1.5rem',
+              }}
+            >
+              YTT200 · Yoga Instructor
+            </p>
+            <div style={{ width: '40px', height: '1px', background: 'var(--serve-amber)', marginBottom: '1.5rem' }} />
+            <p
+              style={{
+                fontFamily: 'var(--font-jost)',
+                fontSize: '0.9rem',
+                color: 'var(--serve-dark)',
+                opacity: 0.7,
+                lineHeight: 1.9,
+                marginBottom: '1.2rem',
+              }}
+            >
+              I have been practising yoga for 4 years. After completing my YTT200 at Gurucat in 2024 and with nearly two years of teaching experience, my greatest joy is sharing my love for this practice with others.
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-jost)',
+                fontSize: '0.9rem',
+                color: 'var(--serve-dark)',
+                opacity: 0.7,
+                lineHeight: 1.9,
+              }}
+            >
+              Yoga is not just a &ldquo;work-out,&rdquo; but a &ldquo;work-in.&rdquo; My primary focus is to help students bridge the gap between inner awareness and physical presence through a holistic approach — incorporating breathwork, meditation, and asanas, alongside ancient and modern teachings. My classes are designed to challenge the entire self: using both stillness and asana practice for a strong and flexible body <em>and</em> mind.
+            </p>
+          </div>
+          {/* Image */}
+          <div className="relative aspect-[4/5] lg:aspect-auto lg:min-h-[600px] order-1 lg:order-2 overflow-hidden">
+            <Image
+              src={asset('/assets/lauren-court.jpg')}
+              alt="Lauren Dreyer — Yoga instructor at SERVE"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── TALIA — PILATES INSTRUCTOR ── */}
+      <section style={{ backgroundColor: 'var(--serve-warm)' }}>
+        <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2">
+          {/* Image */}
+          <div className="relative aspect-[4/5] lg:aspect-auto lg:min-h-[600px] overflow-hidden">
+            <Image
+              src={asset('/assets/talia-pilates.jpg')}
+              alt="Talia Tostee — Pilates instructor at SERVE"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
+          {/* Text */}
+          <div className="flex flex-col justify-center px-10 py-20 lg:px-16">
+            <p className="label-overline mb-4" style={{ color: 'var(--serve-green)', letterSpacing: '0.2em' }}>Pilates Instructor</p>
+            <h2
+              style={{
+                fontFamily: 'var(--font-cormorant)',
+                fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
+                fontWeight: 300,
+                lineHeight: 1.1,
+                color: 'var(--serve-dark)',
+                marginBottom: '0.5rem',
+              }}
+            >
+              Talia Tostee
+            </h2>
+            <p style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--serve-sage)', marginBottom: '1.5rem' }}>
+              BASI Certified Pilates Instructor
+            </p>
+            <div style={{ width: '40px', height: '1px', background: 'var(--serve-amber)', marginBottom: '1.5rem' }} />
+            <p style={{ fontFamily: 'var(--font-jost)', fontSize: '0.9rem', color: 'var(--serve-dark)', opacity: 0.7, lineHeight: 1.9, marginBottom: '1.2rem' }}>
+              Growing up, dance was everything — but it was discovering Pilates at just 13 that truly changed the course of my life. What began as a way to support my dancing quickly became so much more, helping me manage my scoliosis and unlock a strength I never knew I had.
+            </p>
+            <p style={{ fontFamily: 'var(--font-jost)', fontSize: '0.9rem', color: 'var(--serve-dark)', opacity: 0.7, lineHeight: 1.9 }}>
+              Now a qualified BASI Pilates instructor, I bring both personal experience and genuine passion to every session. My goal is simple: to help others feel stronger, more connected, and truly empowered in their own bodies.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── PHILOSOPHY ── */}
       <section style={{ backgroundColor: 'var(--serve-dark)' }}>
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2">
           {/* Image */}
           <div className="relative aspect-[4/5] lg:aspect-auto lg:min-h-[600px]">
             <Image
-              src={asset('/assets/yoga2.png')}
-              alt="Yoga practitioner at SERVE"
+              src={asset('/assets/rooftop-yoga.jpg')}
+              alt="Yoga on the SERVE rooftop terrace"
               fill
-              className="object-cover object-top"
+              className="object-cover object-center"
             />
           </div>
 

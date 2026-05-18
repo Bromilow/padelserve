@@ -110,8 +110,8 @@ export default function MenuContent() {
         style={{ height: 'calc(80vh + 80px)', minHeight: '640px', paddingTop: '80px' }}
       >
         <Image
-          src={asset('/assets/Food.png')}
-          alt="Artisan pizza at SERVE"
+          src={asset('/assets/pizza-court.jpg')}
+          alt="Pizza at SERVE padel courts"
           fill
           className="object-cover object-center"
           priority
